@@ -16,8 +16,8 @@
         /* Hero Section with Faded Background */
 .hero-section {
     /* The '../' tells the code to look inside your project folders */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('images/CabuyaoCityHalljf7175_10.JPG'); 
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), 
+                  url('images/CabuyaoCityHalljf7175_10.JPG'); 
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -27,43 +27,45 @@
     text-align: center;
 }
 
-        /* Text Styling */
-        .hero-content h1 {
-            color: white;
-            font-size: 4rem;
-            font-weight: bold;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.8);
-            margin-bottom: 40px;
-        }
+ .hero-content h1.cabuyao-title {
+    font-size: 7rem;
+    font-weight: 900;
+    margin-bottom: 0;
+    background: -webkit-linear-gradient(#fff, #ccc); /* Subtle silver gradient on text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.5));
+}
 
-        /* The Continue Button */
-        .continue-btn {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 15px 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
+.cabuyao-subtitle {
+    font-size: 1.4rem;
+    font-weight: 300; /* Thin font */
+    text-transform: uppercase;
+    letter-spacing: 8px; /* High spacing for that luxury look */
+    color: rgba(255,255,255,0.8);
+    margin-top: 10px;
+}
 
-        .continue-btn:hover {
-            background-color: #1877F2; /* Your FB Blue from the screenshot */
-            border-color: #1877F2;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        .cabuyao-subtitle {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-    font-style: italic;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+.continue-btn {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 100px; /* Modern pill shape */
+    color: white;
+    padding: 18px 80px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.continue-btn:hover {
+    background: white;
+    color: #1a1a1a;
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
 }
     </style>
 </head>
