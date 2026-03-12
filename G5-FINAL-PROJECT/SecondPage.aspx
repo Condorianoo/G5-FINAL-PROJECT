@@ -24,11 +24,11 @@
         .mcl-nav {
             background: white;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* This pushes the logo left and links right */
             align-items: center;
             padding: 10px 5%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            border-bottom: 4px solid var(--cabuyao-yellow); /* Yellow Accent Line */
+            border-bottom: 4px solid var(--cabuyao-yellow); 
         }
         
         .logo-container {
@@ -43,11 +43,17 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
+        /* Cleaned up nav-links container */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             text-decoration: none;
             color: var(--cabuyao-green);
             font-weight: 700;
-            margin: 0 15px;
+            margin-left: 30px; /* Spacing between the links */
             font-size: 0.85rem;
             text-transform: uppercase;
             padding-bottom: 5px;
@@ -56,22 +62,6 @@
         
         .nav-links a.active { border-bottom: 3px solid var(--cabuyao-green); }
         .nav-links a:hover { color: var(--cabuyao-yellow); }
-
-        .btn-logout {
-            background: var(--cabuyao-green); 
-            color: white; 
-            border: none;
-            padding: 10px 28px; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s;
-            letter-spacing: 1px;
-        }
-        .btn-logout:hover { 
-            background: #004d29; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
 
         /* Choice Cards Section */
         .choice-container {
@@ -101,7 +91,7 @@
         .glass-card:hover {
             background: rgba(255, 255, 255, 0.12);
             transform: translateY(-20px);
-            border-color: var(--cabuyao-yellow); /* Yellow Glow on Hover */
+            border-color: var(--cabuyao-yellow); 
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
         }
 
@@ -137,13 +127,11 @@
                     CABUYAO <span style="color: #8a7300;">PORTAL</span>
                 </h2>
             </div>
+            
             <div class="nav-links">
                 <a href="#" class="active">Home</a>
                 <a href="#">About Us</a>
                 <a href="#">Contact</a>
-            </div>
-            <div class="nav-buttons">
-                <asp:Button ID="btnLogout" runat="server" Text="LOGOUT" CssClass="btn-logout" OnClick="btnHome_Click" />
             </div>
         </nav>
 

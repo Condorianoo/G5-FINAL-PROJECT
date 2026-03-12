@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace G5_FINAL_PROJECT
 {
@@ -8,12 +11,7 @@ namespace G5_FINAL_PROJECT
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // No LoadItems() here!
-        }
-
-        protected void btnHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("HomePage.aspx");
+            // The page load logic can remain empty for now since this is just a navigation menu.
         }
     }
 }
