@@ -7,11 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace G5_FINAL_PROJECT
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    // Make sure this says 'HomePage' so it matches your file name
+    public partial class HomePage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
 
+        // This is the specific method the error is complaining about
+        protected void btnContinue_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SecondPage.aspx");
         }
     }
 }

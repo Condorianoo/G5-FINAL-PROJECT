@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="G5_FINAL_PROJECT.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SecondPage.aspx.cs" Inherits="G5_FINAL_PROJECT.WebForm2" %>
 
 <!DOCTYPE html>
 
