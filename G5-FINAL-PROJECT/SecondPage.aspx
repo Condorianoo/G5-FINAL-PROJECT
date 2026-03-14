@@ -18,13 +18,13 @@
             background-size: cover; 
             background-attachment: fixed;
             background-position: center;
+            overflow: hidden;
         }
 
-        /* Institutional Navbar */
         .mcl-nav {
             background: white;
             display: flex;
-            justify-content: space-between; /* This pushes the logo left and links right */
+            justify-content: space-between;
             align-items: center;
             padding: 10px 5%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
@@ -43,7 +43,6 @@
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
-        /* Cleaned up nav-links container */
         .nav-links {
             display: flex;
             align-items: center;
@@ -53,17 +52,15 @@
             text-decoration: none;
             color: var(--cabuyao-green);
             font-weight: 700;
-            margin-left: 30px; /* Spacing between the links */
+            margin-left: 30px;
             font-size: 0.85rem;
             text-transform: uppercase;
             padding-bottom: 5px;
             transition: 0.3s;
         }
         
-        .nav-links a.active { border-bottom: 3px solid var(--cabuyao-green); }
         .nav-links a:hover { color: var(--cabuyao-yellow); }
 
-        /* Choice Cards Section */
         .choice-container {
             display: flex;
             justify-content: center;
@@ -129,14 +126,14 @@
             </div>
             
             <div class="nav-links">
-                <a href="#" class="active">Home</a>
+                <a href="HomePage.aspx">BACK</a>
                 <a href="#">About Us</a>
                 <a href="#">Contact</a>
             </div>
         </nav>
 
         <div class="choice-container">
-            <a href="ItemsBoard.aspx" class="glass-card">
+            <a href="FindItem.aspx" class="glass-card">
                 <span class="icon-box">🔍</span>
                 <h2>I LOST SOMETHING</h2>
                 <p>Browse our verified database of found items to reclaim your missing belongings.</p>

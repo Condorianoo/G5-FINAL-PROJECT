@@ -67,13 +67,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FindItem.aspx" />
     <Content Include="images\CabuyaoCityHalljf7175_10.JPG" />
     <Content Include="images\Cabuyao_Logo.png" />
+    <Content Include="ReportItem.aspx" />
     <Content Include="Web.config" />
     <Content Include="HomePage.aspx" />
     <Content Include="SecondPage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FindItem.aspx.cs">
+      <DependentUpon>FindItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FindItem.aspx.designer.cs">
+      <DependentUpon>FindItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
@@ -81,6 +90,13 @@
     </Compile>
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportItem.aspx.cs">
+      <DependentUpon>ReportItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportItem.aspx.designer.cs">
+      <DependentUpon>ReportItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="SecondPage.aspx.cs">
       <DependentUpon>SecondPage.aspx</DependentUpon>
