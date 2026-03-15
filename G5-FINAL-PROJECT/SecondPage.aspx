@@ -126,10 +126,12 @@
             </div>
             
             <div class="nav-links">
-                <a href="HomePage.aspx">BACK</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
-            </div>
+    <a href="SecondPage.aspx">Home</a>
+    <a href="NewsEvents.aspx">News</a>
+    <a href="AboutUs.aspx">About Us</a>
+    <a href="Contact.aspx">Contact</a>
+
+</div>
         </nav>
 
         <div class="choice-container">

@@ -176,10 +176,11 @@
                 </h2>
             </div>
             <div class="nav-links">
-                <a href="SecondPage.aspx">BACK</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
-            </div>
+    <a href="SecondPage.aspx">Home</a>
+    <a href="NewsEvents.aspx">News</a>
+    <a href="AboutUs.aspx">About Us</a>
+    <a href="Contact.aspx">Contact</a>
+</div>
         </nav>
 
         <div class="main-wrapper">

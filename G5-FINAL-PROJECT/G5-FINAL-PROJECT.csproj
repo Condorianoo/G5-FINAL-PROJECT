@@ -68,12 +68,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FindItem.aspx" />
+    <Content Include="images\Aeron.jpg" />
+    <Content Include="images\Barbiera.jpg" />
+    <Content Include="images\Batingaw.jpg" />
+    <Content Include="images\Black_Wallet.jpg" />
     <Content Include="images\CabuyaoCityHalljf7175_10.JPG" />
     <Content Include="images\Cabuyao_Logo.png" />
+    <Content Include="images\Cabuyao_Portal.jpg" />
+    <Content Include="images\Dom.jpg" />
+    <Content Include="images\Dwight.jpg" />
+    <Content Include="images\Job_Fair.jpeg" />
+    <Content Include="images\Quennu.jpg" />
     <Content Include="ReportItem.aspx" />
     <Content Include="Web.config" />
     <Content Include="HomePage.aspx" />
     <Content Include="SecondPage.aspx" />
+    <Content Include="AboutUs.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="NewsEvents.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FindItem.aspx.cs">
@@ -104,6 +116,27 @@
     </Compile>
     <Compile Include="SecondPage.aspx.designer.cs">
       <DependentUpon>SecondPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsEvents.aspx.cs">
+      <DependentUpon>NewsEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsEvents.aspx.designer.cs">
+      <DependentUpon>NewsEvents.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

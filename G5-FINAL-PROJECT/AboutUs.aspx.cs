@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace G5_FINAL_PROJECT
 {
-    public partial class SecondPage : System.Web.UI.Page
+    public partial class AboutUs : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
