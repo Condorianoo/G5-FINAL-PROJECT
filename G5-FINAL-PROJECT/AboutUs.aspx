@@ -1,5 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="G5_FINAL_PROJECT.AboutUs" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@
         :root {
             --cabuyao-green: #006837;
             --cabuyao-yellow: #FFC000; 
-            --dark-overlay: rgba(0, 0, 0, 0.85); 
+            --dark-overlay: rgba(0, 104, 55, 0.78); 
         }
 
         body, html {
@@ -62,18 +63,20 @@
 
         
         .dev-card {
-            background: rgba(0, 0, 0, 0.4); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
+            background: #ffffff; 
+            border: 1px solid rgba(0, 104, 55, 0.15); 
             border-radius: 12px;
             padding: 15px;
             width: 220px; 
             text-align: center;
             transition: 0.3s;
+            color: #2f2f2f;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
         }
 
         .dev-card:hover {
             transform: translateY(-5px);
-            background: rgba(0, 0, 0, 0.6);
+            background: #f7f7f7;
         }
 
         .dev-image {
@@ -86,14 +89,14 @@
         }
 
         .dev-name {
-            color: var(--cabuyao-yellow);
+            color: #006837;
             font-size: 1.2rem;
             font-weight: 700;
             margin: 0 0 5px 0;
         }
 
         .dev-role {
-            color: white;
+            color: #8a7300;
             font-size: 0.85rem;
             font-weight: bold;
             text-transform: uppercase;
@@ -102,7 +105,7 @@
         }
 
         .dev-bio {
-            color: rgba(255, 255, 255, 0.7);
+            color: #444444;
             font-size: 0.85rem;
             line-height: 1.4;
             margin: 0;
@@ -243,6 +246,7 @@
 
             </div>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>

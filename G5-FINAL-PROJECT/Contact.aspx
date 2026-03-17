@@ -1,5 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="G5_FINAL_PROJECT.Contact" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,17 +19,18 @@
         body, html {
             margin: 0; padding: 0; 
             font-family: 'Segoe UI', Arial, sans-serif; 
-            background: #ffffff; 
+            background: linear-gradient(rgba(0, 104, 55, 0.78), rgba(0, 104, 55, 0.78)), url('images/CabuyaoCityHalljf7175_10.JPG');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             color: var(--text-dark);
         }
 /* --- HERO HEADER SECTION --- */
         .contact-hero {
-            background: linear-gradient(rgba(0, 104, 55, 0.85), rgba(0, 104, 55, 0.9)), url('images/CabuyaoCityHalljf7175_10.JPG');
-            background-size: cover;
-            background-position: center;
-            height: 300px; 
+            background: none;
+            height: 220px; 
             text-align: center;
-            padding-top: 70px; 
+            padding-top: 35px; 
             color: white;
             box-sizing: border-box;
         }
@@ -44,7 +46,7 @@
 
         .contact-container {
             max-width: 1000px;
-            margin: -100px auto -60px auto; 
+            margin: -70px auto -20px auto; 
             background: white;
             border-radius: 12px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
@@ -168,6 +170,7 @@
             background: #eee;
             position: relative;
             z-index: 1; 
+            margin-top: 50px;
         }
 
         @media (max-width: 768px) {
@@ -206,11 +209,11 @@
                 </asp:LinkButton>
             </div>
 
-            <div class="info-section">
-                <div class="info-item">
-                    <span class="info-icon">&#9993;</span>
-                    <div class="info-text">
-                        <h4>Email Address</h4>
+                <div class="info-section">
+                    <div class="info-item">
+                        <span class="info-icon">&#9993;</span>
+                        <div class="info-text">
+                            <h4>Email Address</h4>
                         <p>support@cabuyaoportal.gov.ph<br />admin@cabuyaoportal.gov.ph</p>
                     </div>
                 </div>
@@ -241,6 +244,7 @@
                 loading="lazy">
             </iframe>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>

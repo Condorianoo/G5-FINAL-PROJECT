@@ -1,5 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportItem.aspx.cs" Inherits="G5_FINAL_PROJECT.ReportItem" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@
         :root {
             --cabuyao-green: #006837;
             --cabuyao-yellow: #FFD700;
-            --dark-overlay: rgba(0, 0, 0, 0.75);
+            --dark-overlay: rgba(0, 104, 55, 0.78);
         }
 
         body, html {
@@ -167,6 +168,7 @@
                 </div>
             </main>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>

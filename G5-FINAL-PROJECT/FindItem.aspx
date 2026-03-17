@@ -1,5 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FindItem.aspx.cs" Inherits="G5_FINAL_PROJECT.FindItem" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@
         :root {
             --cabuyao-green: #006837;
             --cabuyao-yellow: #FFD700;
-            --dark-overlay: rgba(0, 0, 0, 0.75);
+            --dark-overlay: rgba(0, 104, 55, 0.78);
         }
 
         body, html {
@@ -25,13 +26,13 @@
 .main-wrapper {
             display: flex;
             margin-top: 30px;
-            padding: 0 5%;
-            gap: 30px;
+            padding: 0 5% 80px 5%;
+            gap: 24px;
             align-items: flex-start;
         }
 
         .sidebar {
-            width: 320px;
+            width: 240px;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
@@ -76,22 +77,22 @@
         
         .items-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
             padding-bottom: 50px;
         }
 
         .item-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             color: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 22px rgba(0,0,0,0.28);
         }
 
         .item-card:hover {
@@ -113,10 +114,10 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .item-info { padding: 20px; }
-        .item-title { font-weight: 800; font-size: 1.3rem; margin: 0; color: white; letter-spacing: 0.5px; }
-        .item-loc { color: var(--cabuyao-yellow); font-size: 0.95rem; margin-top: 10px; font-weight: 600; }
-        .item-date { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 5px; }
+        .item-info { padding: 16px; }
+        .item-title { font-weight: 800; font-size: 1.1rem; margin: 0; color: white; letter-spacing: 0.5px; }
+        .item-loc { color: var(--cabuyao-yellow); font-size: 0.9rem; margin-top: 8px; font-weight: 600; }
+        .item-date { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 4px; }
 
         @media screen and (max-width: 900px) {
             .sidebar { display: none; }
@@ -169,6 +170,7 @@
                 </div>
             </main>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>

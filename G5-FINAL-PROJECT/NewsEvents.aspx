@@ -1,5 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewsEvents.aspx.cs" Inherits="G5_FINAL_PROJECT.NewsEvents" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,51 +19,58 @@
         body, html {
             margin: 0; padding: 0; 
             font-family: 'Segoe UI', Arial, sans-serif; 
-            background: #ffffff; 
+            background: linear-gradient(rgba(0, 104, 55, 0.78), rgba(0, 104, 55, 0.78)), url('images/CabuyaoCityHalljf7175_10.JPG'); 
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             color: var(--text-dark);
         }
 /* --- HERO HEADER SECTION --- */
         .news-hero {
-            background: linear-gradient(rgba(0, 104, 55, 0.85), rgba(0, 104, 55, 0.9)), url('images/CabuyaoCityHalljf7175_10.JPG');
-            background-size: cover;
-            background-position: center;
-            height: 250px; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
+            background: none;
+            height: 220px; 
             text-align: center;
+            padding-top: 35px; 
+            color: white;
+            box-sizing: border-box;
         }
 
         .news-hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem; /* match contact */
             font-weight: 900;
             letter-spacing: 2px;
-            margin: 0 0 10px 0;
+            margin: 0;
             text-transform: uppercase;
         }
 
         .news-hero p {
-            color: var(--cabuyao-yellow);
-            font-size: 1.1rem;
-            font-weight: 600;
+            display: none;
             margin: 0;
-            letter-spacing: 1px;
+            padding: 0;
         }
 
         /* --- NEWS GRID SECTION --- */
         .content-container {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: -70px auto -20px auto;
             padding: 0 20px;
         }
 
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 18px;
+            padding: 28px; /* add internal space so content sits lower like the contact form */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+        }
+
         .section-title {
-            color: var(--text-dark);
+            color: white;
             font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 40px;
+            margin: 6px 0 18px 0;
             text-transform: uppercase;
             border-left: 5px solid var(--cabuyao-yellow);
             padding-left: 15px;
@@ -163,42 +171,45 @@
         </header>
 
         <main class="content-container">
-            <h2 class="section-title">Latest Updates</h2>
+            <div class="glass-panel">
+                <h2 class="section-title">Latest Updates</h2>
 
-            <div class="news-grid">
-                
-                <article class="news-card">
-                    <img src="images/Cabuyao_Portal.jpg" alt="News Image" class="news-image" />
-                    <div class="news-content">
-                        <span class="news-date">March 15, 2026</span>
-                        <h3 class="news-title">City Hall Launches Digital Lost & Found Portal</h3>
-                        <p class="news-excerpt">In an effort to modernize public services, the local government has officially launched the centralized online system for recovering missing items.</p>
-                        <a href="#" class="read-more">Read Full Story ?</a>
-                    </div>
-                </article>
+                <div class="news-grid">
+                    
+                    <article class="news-card">
+                        <img src="images/Cabuyao_Portal.jpg" alt="News Image" class="news-image" />
+                        <div class="news-content">
+                            <span class="news-date">March 15, 2026</span>
+                            <h3 class="news-title">City Hall Launches Digital Lost & Found Portal</h3>
+                            <p class="news-excerpt">In an effort to modernize public services, the local government has officially launched the centralized online system for recovering missing items.</p>
+                            <a href="#" class="read-more">Read Full Story ?</a>
+                        </div>
+                    </article>
 
-                <article class="news-card">
-                    <img src="images/Batingaw.jpg" alt="News Image" class="news-image" />
-                    <div class="news-content">
-                        <span class="news-date">February 28, 2026</span>
-                        <h3 class="news-title">Preparations for the Annual Batingaw Festival</h3>
-                        <p class="news-excerpt">Citizens are gearing up for the upcoming Batingaw Festival. Expect road closures around the City Plaza and spectacular parade floats this weekend.</p>
-                        <a href="#" class="read-more">Read Full Story ?</a>
-                    </div>
-                </article>
+                    <article class="news-card">
+                        <img src="images/Batingaw.jpg" alt="News Image" class="news-image" />
+                        <div class="news-content">
+                            <span class="news-date">February 28, 2026</span>
+                            <h3 class="news-title">Preparations for the Annual Batingaw Festival</h3>
+                            <p class="news-excerpt">Citizens are gearing up for the upcoming Batingaw Festival. Expect road closures around the City Plaza and spectacular parade floats this weekend.</p>
+                            <a href="#" class="read-more">Read Full Story ?</a>
+                        </div>
+                    </article>
 
-                <article class="news-card">
-                    <img src="images/Job_Fair.jpeg" alt="News Image" class="news-image" />
-                    <div class="news-content">
-                        <span class="news-date">February 10, 2026</span>
-                        <h3 class="news-title">Local Job Fair at Cabuyao Retail Arena</h3>
-                        <p class="news-excerpt">Over 50 companies will be participating in the mega job fair hosted by the Cabuyao Public Employment Service Office (PESO). Bring your resumes!</p>
-                        <a href="#" class="read-more">Read Full Story ?</a>
-                    </div>
-                </article>
+                    <article class="news-card">
+                        <img src="images/Job_Fair.jpeg" alt="News Image" class="news-image" />
+                        <div class="news-content">
+                            <span class="news-date">February 10, 2026</span>
+                            <h3 class="news-title">Local Job Fair at Cabuyao Retail Arena</h3>
+                            <p class="news-excerpt">Over 50 companies will be participating in the mega job fair hosted by the Cabuyao Public Employment Service Office (PESO). Bring your resumes!</p>
+                            <a href="#" class="read-more">Read Full Story ?</a>
+                        </div>
+                    </article>
 
+                </div>
             </div>
         </main>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>

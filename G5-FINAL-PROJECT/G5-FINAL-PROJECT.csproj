@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FindItem.aspx" />
+    <Content Include="SiteFooter.ascx" />
     <Content Include="SiteHeader.ascx" />
     <Content Include="styles\header.css" />
     <Content Include="images\Aeron.jpg" />
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="FindItem.aspx.designer.cs">
       <DependentUpon>FindItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteFooter.ascx.cs">
+      <DependentUpon>SiteFooter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteFooter.ascx.designer.cs">
+      <DependentUpon>SiteFooter.ascx</DependentUpon>
     </Compile>
     <Compile Include="SiteHeader.ascx.cs">
       <DependentUpon>SiteHeader.ascx</DependentUpon>

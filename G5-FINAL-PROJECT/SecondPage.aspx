@@ -1,5 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SecondPage.aspx.cs" Inherits="G5_FINAL_PROJECT.SecondPage" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +11,7 @@
         :root {
             --cabuyao-green: #006837;
             --cabuyao-yellow: #FFD700;
-            --dark-overlay: rgba(0, 0, 0, 0.75);
+            --dark-overlay: rgba(0, 104, 55, 0.78);
         }
 
         body, html {
@@ -33,32 +34,29 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #ffffff;
+            border: 2px solid rgba(0, 104, 55, 0.2);
             border-radius: 30px;
             width: 400px;
             padding: 60px 40px;
             text-align: center;
-            color: white;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: var(--cabuyao-green);
+            transition: all 0.35s ease;
             text-decoration: none;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
         }
 
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-20px);
+            transform: translateY(-15px);
             border-color: var(--cabuyao-yellow); 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
         }
 
         .icon-box {
             font-size: 4.5rem;
             margin-bottom: 25px;
             display: block;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+            color: var(--cabuyao-green);
         }
 
         .glass-card h2 { 
@@ -66,14 +64,14 @@
             margin-bottom: 15px; 
             letter-spacing: 2px;
             font-weight: 800;
-            color: #fff;
+            color: var(--cabuyao-green);
         }
 
         .glass-card p { 
-            color: rgba(255, 255, 255, 0.8); 
+            color: var(--cabuyao-yellow); 
             line-height: 1.7; 
             font-size: 1rem;
-            font-weight: 400;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -94,6 +92,7 @@
                 <p>Register an item you've found to help connect it with its rightful owner.</p>
             </a>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>
