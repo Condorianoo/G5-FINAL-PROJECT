@@ -1,9 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="G5_FINAL_PROJECT.AboutUs" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="G5_FINAL_PROJECT.AboutUs" %>
+<%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <title>About Us - Cabuyao Portal</title>
+    <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -20,41 +22,7 @@
             background-position: center;
             color: white;
         }
-
-      
-        .mcl-nav {
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            border-bottom: 4px solid var(--cabuyao-yellow); 
-        }
-        
-        .logo-container {
-            display: flex; align-items: center; gap: 15px;
-        }
-
-        .cabuyao-logo {
-            height: 50px; width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .nav-links {
-            display: flex; align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none; color: var(--cabuyao-green);
-            font-weight: 700; margin-left: 30px; font-size: 0.85rem;
-            text-transform: uppercase; padding-bottom: 5px; transition: 0.3s;
-        }
-        
-        .nav-links a.active { border-bottom: 3px solid var(--cabuyao-green); }
-        .nav-links a:hover { color: var(--cabuyao-yellow); }
-
-        /* Main Content Container */
+/* Main Content Container */
         .content-container {
             display: flex;
             justify-content: center;
@@ -208,21 +176,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="mcl-nav">
-            <div class="logo-container">
-                <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" class="cabuyao-logo" />
-                <h2 style="color: var(--cabuyao-green); margin:0; letter-spacing:1px; font-weight: 900;">
-                    CABUYAO <span style="color: #8a7300;">PORTAL</span>
-                </h2>
-            </div>
-            
-            <div class="nav-links">
-                <a href="SecondPage.aspx">Home</a>
-                <a href="NewsEvents.aspx">News</a>
-                <a href="AboutUs.aspx" class="active">About Us</a>
-                <a href="Contact.aspx">Contact</a>
-            </div>
-        </nav>
+        <uc:SiteHeader runat="server" ID="SiteHeader" />
 
         <div class="content-container">
             <div class="glass-panel">
@@ -277,11 +231,11 @@
                     
                     <div class="info-grid">
                         <div class="info-box">
-                            <h3>🎯 Our Mission</h3>
+                            <h3>&#128161; Our Mission</h3>
                             <p>To provide a secure, efficient, and accessible platform for reporting and recovering lost items within the Cabuyao community. We aim to foster honesty, unity, and technological advancement among our citizens by making public services completely digital.</p>
                         </div>
                         <div class="info-box">
-                            <h3>⚙️ How It Works</h3>
+                            <h3>&#9881; How It Works</h3>
                             <p>Citizens can seamlessly browse our real-time database for their missing belongings or submit a report for items they have found. The system is securely managed by local administrators to ensure safe and proper turn-overs of all physical items.</p>
                         </div>
                     </div>
@@ -292,3 +246,5 @@
     </form>
 </body>
 </html>
+
+
