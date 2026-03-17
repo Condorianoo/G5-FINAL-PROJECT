@@ -1,4 +1,4 @@
-﻿        <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="G5_FINAL_PROJECT.HomePage" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="G5_FINAL_PROJECT.HomePage" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,7 +15,7 @@
 
         
         .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+            background-image: linear-gradient(rgba(0, 104, 55, 0.78), rgba(0, 104, 55, 0.78)), 
                               url('images/CabuyaoCityHalljf7175_10.JPG');
             background-size: cover;
             background-position: center;
@@ -123,3 +123,5 @@
     </form>
 </body>
 </html>
+
+

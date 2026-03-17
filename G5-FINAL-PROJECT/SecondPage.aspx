@@ -1,65 +1,28 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SecondPage.aspx.cs" Inherits="G5_FINAL_PROJECT.SecondPage" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SecondPage.aspx.cs" Inherits="G5_FINAL_PROJECT.SecondPage" %>
+<%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <title>Cabuyao Portal - Lost & Found</title>
+    <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
             --cabuyao-yellow: #FFD700;
-            --dark-overlay: rgba(0, 0, 0, 0.75);
+            --dark-overlay: rgba(0, 104, 55, 0.78);
         }
 
         body, html {
-            margin: 0; padding: 0; height: 100%;
+            margin: 0; padding: 0; min-height: 100vh;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), url('images/CabuyaoCityHalljf7175_10.JPG');
             background-size: cover; 
             background-attachment: fixed;
             background-position: center;
-            overflow: hidden;
+            overflow-x: hidden; /* avoid horizontal shift */
         }
-
-        .mcl-nav {
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            border-bottom: 4px solid var(--cabuyao-yellow); 
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .cabuyao-logo {
-            height: 50px;
-            width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--cabuyao-green);
-            font-weight: 700;
-            margin-left: 30px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            padding-bottom: 5px;
-            transition: 0.3s;
-        }
-        
-        .nav-links a:hover { color: var(--cabuyao-yellow); }
 
         .choice-container {
             display: flex;
@@ -71,32 +34,29 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #ffffff;
+            border: 2px solid rgba(0, 104, 55, 0.2);
             border-radius: 30px;
             width: 400px;
             padding: 60px 40px;
             text-align: center;
-            color: white;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: var(--cabuyao-green);
+            transition: all 0.35s ease;
             text-decoration: none;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
         }
 
         .glass-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-20px);
+            transform: translateY(-15px);
             border-color: var(--cabuyao-yellow); 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
         }
 
         .icon-box {
             font-size: 4.5rem;
             margin-bottom: 25px;
             display: block;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+            color: var(--cabuyao-green);
         }
 
         .glass-card h2 { 
@@ -104,49 +64,38 @@
             margin-bottom: 15px; 
             letter-spacing: 2px;
             font-weight: 800;
-            color: #fff;
+            color: var(--cabuyao-green);
         }
 
         .glass-card p { 
-            color: rgba(255, 255, 255, 0.8); 
+            color: var(--cabuyao-yellow); 
             line-height: 1.7; 
             font-size: 1rem;
-            font-weight: 400;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="mcl-nav">
-            <div class="logo-container">
-                <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" class="cabuyao-logo" />
-                <h2 style="color: var(--cabuyao-green); margin:0; letter-spacing:1px; font-weight: 900;">
-                    CABUYAO <span style="color: #8a7300;">PORTAL</span>
-                </h2>
-            </div>
-            
-            <div class="nav-links">
-    <a href="SecondPage.aspx">Home</a>
-    <a href="NewsEvents.aspx">News</a>
-    <a href="AboutUs.aspx">About Us</a>
-    <a href="Contact.aspx">Contact</a>
-
-</div>
-        </nav>
+        <uc:SiteHeader runat="server" ID="SiteHeader" />
 
         <div class="choice-container">
             <a href="FindItem.aspx" class="glass-card">
-                <span class="icon-box">🔍</span>
+                <span class="icon-box">&#128269;</span>
                 <h2>I LOST SOMETHING</h2>
                 <p>Browse our verified database of found items to reclaim your missing belongings.</p>
             </a>
 
             <a href="ReportItem.aspx" class="glass-card">
-                <span class="icon-box">🤝</span>
+                <span class="icon-box">&#129309;</span>
                 <h2>I FOUND SOMETHING</h2>
                 <p>Register an item you've found to help connect it with its rightful owner.</p>
             </a>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>
+
+
+

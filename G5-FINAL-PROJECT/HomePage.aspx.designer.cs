@@ -24,6 +24,15 @@ namespace G5_FINAL_PROJECT
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// SiteHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::G5_FINAL_PROJECT.SiteHeader SiteHeader;
+
+        /// <summary>
         /// btnContinue control.
         /// </summary>
         /// <remarks>

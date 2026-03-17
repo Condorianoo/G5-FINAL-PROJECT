@@ -1,9 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="G5_FINAL_PROJECT.Contact" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="G5_FINAL_PROJECT.Contact" %>
+<%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>Contact Us - Cabuyao Portal</title>
+    <title>Contact - Cabuyao Portal</title>
+    <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -16,35 +19,18 @@
         body, html {
             margin: 0; padding: 0; 
             font-family: 'Segoe UI', Arial, sans-serif; 
-            background: #ffffff; 
+            background: linear-gradient(rgba(0, 104, 55, 0.78), rgba(0, 104, 55, 0.78)), url('images/CabuyaoCityHalljf7175_10.JPG');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
             color: var(--text-dark);
         }
-
-        .mcl-nav {
-            background: white; display: flex; justify-content: space-between;
-            align-items: center; padding: 10px 5%; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-bottom: 4px solid var(--cabuyao-yellow); position: relative; z-index: 10;
-        }
-        
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .cabuyao-logo { height: 50px; width: auto; }
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a {
-            text-decoration: none; color: var(--cabuyao-green); font-weight: 700;
-            margin-left: 30px; font-size: 0.85rem; text-transform: uppercase;
-            padding-bottom: 5px; transition: 0.3s;
-        }
-        .nav-links a.active { border-bottom: 3px solid var(--cabuyao-green); }
-        .nav-links a:hover { color: var(--cabuyao-yellow); }
-
-        /* --- HERO HEADER SECTION --- */
+/* --- HERO HEADER SECTION --- */
         .contact-hero {
-            background: linear-gradient(rgba(0, 104, 55, 0.85), rgba(0, 104, 55, 0.9)), url('images/CabuyaoCityHalljf7175_10.JPG');
-            background-size: cover;
-            background-position: center;
-            height: 300px; 
+            background: none;
+            height: 220px; 
             text-align: center;
-            padding-top: 70px; 
+            padding-top: 35px; 
             color: white;
             box-sizing: border-box;
         }
@@ -60,7 +46,7 @@
 
         .contact-container {
             max-width: 1000px;
-            margin: -100px auto -60px auto; 
+            margin: -70px auto -20px auto; 
             background: white;
             border-radius: 12px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
@@ -184,6 +170,7 @@
             background: #eee;
             position: relative;
             z-index: 1; 
+            margin-top: 50px;
         }
 
         @media (max-width: 768px) {
@@ -195,20 +182,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="mcl-nav">
-            <div class="logo-container">
-                <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" class="cabuyao-logo" />
-                <h2 style="color: var(--cabuyao-green); margin:0; letter-spacing:1px; font-weight: 900;">
-                    CABUYAO <span style="color: var(--cabuyao-yellow);">PORTAL</span>
-                </h2>
-            </div>
-            <div class="nav-links">
-                <a href="SecondPage.aspx">Home</a>
-                <a href="NewsEvents.aspx">News</a>
-                <a href="AboutUs.aspx">About Us</a>
-                <a href="Contact.aspx" class="active">Contact</a>
-            </div>
-        </nav>
+        <uc:SiteHeader runat="server" ID="SiteHeader" />
 
         <header class="contact-hero">
             <h1>CONTACT US</h1>
@@ -216,7 +190,7 @@
 
         <main class="contact-container">
             <div class="form-section">
-                <h2>📬 Get In Touch</h2>
+                <h2>&#128172; Get In Touch</h2>
                 
                 <asp:Label ID="lblSuccess" runat="server" CssClass="alert-success" Visible="false"></asp:Label>
 
@@ -231,27 +205,27 @@
                 </div>
                 
                 <asp:LinkButton ID="btnSubmit" runat="server" CssClass="btn-submit" OnClick="btnSubmit_Click">
-                    Send Message →
+                    Send Message &#10148;
                 </asp:LinkButton>
             </div>
 
-            <div class="info-section">
-                <div class="info-item">
-                    <span class="info-icon">✉️</span>
-                    <div class="info-text">
-                        <h4>Email Address</h4>
+                <div class="info-section">
+                    <div class="info-item">
+                        <span class="info-icon">&#9993;</span>
+                        <div class="info-text">
+                            <h4>Email Address</h4>
                         <p>support@cabuyaoportal.gov.ph<br />admin@cabuyaoportal.gov.ph</p>
                     </div>
                 </div>
                 <div class="info-item">
-                    <span class="info-icon">📞</span>
+                    <span class="info-icon">&#128222;</span>
                     <div class="info-text">
                         <h4>Phone Number</h4>
                         <p>(049) 534-2330<br />+63 912 345 6789</p>
                     </div>
                 </div>
                 <div class="info-item">
-                    <span class="info-icon">📍</span>
+                    <span class="info-icon">&#128205;</span>
                     <div class="info-text">
                         <h4>Office Location</h4>
                         <p>Cabuyao City Hall, F.B. Bailon Street,<br />Brgy. Sala, Cabuyao City, Laguna</p>
@@ -270,6 +244,9 @@
                 loading="lazy">
             </iframe>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>
+
+
