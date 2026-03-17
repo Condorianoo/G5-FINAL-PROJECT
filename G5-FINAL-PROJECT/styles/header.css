@@ -3,6 +3,10 @@
     --cabuyao-yellow: #FFD700;
 }
 
+html {
+    overflow-y: scroll; /* reserve scrollbar width across all pages */
+}
+
 .mcl-nav {
     background: white;
     display: flex;
@@ -14,6 +18,8 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .logo-container {

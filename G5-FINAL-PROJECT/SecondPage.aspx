@@ -14,13 +14,13 @@
         }
 
         body, html {
-            margin: 0; padding: 0; height: 100%;
+            margin: 0; padding: 0; min-height: 100vh;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), url('images/CabuyaoCityHalljf7175_10.JPG');
             background-size: cover; 
             background-attachment: fixed;
             background-position: center;
-            overflow: hidden;
+            overflow-x: hidden; /* avoid horizontal shift */
         }
 
         .choice-container {
