@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="G5_FINAL_PROJECT.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="G5_FINAL_PROJECT.Register" %>
 <%@ Register TagPrefix="uc" TagName="Header" Src="~/SiteHeader.ascx" %>
 <%@ Register TagPrefix="uc" TagName="Footer" Src="~/SiteFooter.ascx" %>
 
@@ -18,7 +18,7 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* Auth page override to prevent white outline from scaled layout */
+        
         .auth-page {
             transform: none !important;
             max-width: 100% !important;
@@ -153,7 +153,10 @@
                             <asp:TextBox ID="txtConfirm" runat="server" CssClass="auth-input" TextMode="Password" placeholder="Re-enter password"></asp:TextBox>
                         </div>
 
-                        <asp:Button ID="btnRegister" runat="server" Text="Create Account" CssClass="btn-auth" />
+                        <asp:Label ID="lblMessage" runat="server" ForeColor="#ff6b6b" Font-Bold="true"></asp:Label>
+                        <br /><br />
+
+                        <asp:Button ID="btnRegister" runat="server" Text="Create Account" CssClass="btn-auth" OnClick="btnRegister_Click" />
 
                         <div class="switch-auth">
                             Already have an account? <a href="Login.aspx">Sign In</a>

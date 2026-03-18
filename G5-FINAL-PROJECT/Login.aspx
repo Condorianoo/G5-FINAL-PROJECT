@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="G5_FINAL_PROJECT.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="G5_FINAL_PROJECT.Login" %>
 <%@ Register TagPrefix="uc" TagName="Header" Src="~/SiteHeader.ascx" %>
 <%@ Register TagPrefix="uc" TagName="Footer" Src="~/SiteFooter.ascx" %>
 
@@ -18,7 +18,7 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* Auth page override to prevent white outline from scaled layout */
+        
         .auth-page {
             transform: none !important;
             max-width: 100% !important;
@@ -140,10 +140,11 @@
 
                         <div class="input-group">
                             <label>Password</label>
-                            <asp:TextBox ID="txtPassword" runat="server" CssClass="login-input" TextMode="Password" placeholder="••••••••"></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="login-input" TextMode="Password" placeholder=""></asp:TextBox>
+                            <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
                         </div>
 
-                        <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-login" />
+                        <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-login" OnClick="btnLogin_Click" />
 
                         <div class="switch-auth">
                             Don't have an account? <a href="Register.aspx">Create Account</a>
@@ -156,3 +157,4 @@
     </form>
 </body>
 </html>
+

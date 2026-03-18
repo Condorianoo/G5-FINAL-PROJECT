@@ -1,11 +1,10 @@
-:root {
+﻿:root {
     --cabuyao-green: #006837;
     --cabuyao-yellow: #FFD700;
-    --scale-body: 0.7;
 }
 
 html {
-    overflow-y: scroll; /* reserve scrollbar width across all pages */
+    overflow-y: scroll; 
     overflow-x: hidden;
     height: 100%;
 }
@@ -16,7 +15,7 @@ body {
     min-height: 100%;
 }
 
-/* Layout scaffolding */
+
 body > form {
     display: flex;
     flex-direction: column;
@@ -28,6 +27,7 @@ body > form > .page-shell {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
+    min-height: 100%;
     width: 100%;
     align-items: center;
 }
@@ -40,14 +40,12 @@ body > form > .page-shell {
 .page-content {
     display: flex;
     flex-direction: column;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     width: 100%;
-    max-width: 1400px;
-    transform: scale(var(--scale-body));
-    transform-origin: top center;
+    max-width: 1200px;
+    padding: 24px 5vw;
     margin: 0 auto;
     box-sizing: border-box;
-    min-height: calc(100vh / var(--scale-body));
 }
 
 body > form > footer {
@@ -57,7 +55,7 @@ body > form > footer {
     flex-shrink: 0;
 }
 
-/* Header / nav */
+
 .mcl-nav {
     background: white;
     display: flex;
@@ -71,12 +69,13 @@ body > form > footer {
     z-index: 1000;
     width: 100%;
     box-sizing: border-box;
+    gap: 12px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .cabuyao-logo {
@@ -88,14 +87,15 @@ body > form > footer {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 22px;
+    flex-wrap: wrap;
 }
 
 .nav-link {
     text-decoration: none;
     color: var(--cabuyao-green);
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     text-transform: uppercase;
     padding-bottom: 5px;
     transition: 0.3s;
@@ -124,3 +124,59 @@ body > form > footer {
     color: #fff;
     border-color: var(--cabuyao-yellow);
 }
+
+
+@media (max-width: 900px) {
+    .mcl-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 20px;
+    }
+    .logo-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 14px;
+    }
+    .nav-link,
+    .login-btn {
+        font-size: 0.9rem;
+    }
+    .page-content {
+        padding: 18px 4vw;
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mcl-nav {
+        align-items: stretch;
+        gap: 10px;
+    }
+    .logo-container {
+        gap: 10px;
+    }
+    .cabuyao-logo {
+        height: 42px;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nav-link {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .login-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .page-content {
+        padding: 16px 14px;
+        max-width: 100%;
+    }
+}
+

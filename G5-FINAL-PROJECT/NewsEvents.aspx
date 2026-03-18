@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewsEvents.aspx.cs" Inherits="G5_FINAL_PROJECT.NewsEvents" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NewsEvents.aspx.cs" Inherits="G5_FINAL_PROJECT.NewsEvents" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
 <%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
@@ -6,224 +6,147 @@
 <html>
 <head runat="server">
     <title>News &amp; Events - Cabuyao Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
-            --cabuyao-yellow: #d4a000;
+            --cabuyao-yellow: #FFD700;
             --text-dark: #333333;
             --text-light: #666666;
-            --bg-light: #f9f9f9;
         }
 
         body, html {
             margin: 0; padding: 0; 
-            font-family: 'Segoe UI', Arial, sans-serif; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             background: linear-gradient(rgba(0, 104, 55, 0.78), rgba(0, 104, 55, 0.78)), url('images/CabuyaoCityHalljf7175_10.JPG'); 
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
-            color: var(--text-dark);
-        }
-/* --- HERO HEADER SECTION --- */
-        .news-hero {
-            background: none;
-            height: 220px; 
-            text-align: center;
-            padding-top: 35px; 
             color: white;
-            box-sizing: border-box;
         }
 
-        .news-hero h1 {
-            font-size: 3.5rem; /* match contact */
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin: 0;
-            text-transform: uppercase;
-        }
+        .news-hero { text-align: center; padding: 60px 20px 20px 20px; color: white; }
+        .news-hero h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: 2px; margin: 0; text-transform: uppercase; }
 
-        .news-hero p {
-            display: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* --- NEWS GRID SECTION --- */
-        .content-container {
-            max-width: 1180px;
-            margin: -70px auto -20px auto;
-            padding: 0 16px;
-        }
+        .content-container { max-width: 1180px; margin: 20px auto 80px auto; padding: 0 16px; }
 
         .glass-panel {
             background: rgba(255, 255, 255, 0.08); 
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15); 
-            border-radius: 18px;
-            padding: 28px; /* add internal space so content sits lower like the contact form */
-            margin-bottom: 48px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         .section-title {
-            color: white;
-            font-size: 2rem;
-            font-weight: 800;
-            margin: 6px 0 18px 0;
-            text-transform: uppercase;
-            border-left: 5px solid var(--cabuyao-yellow);
-            padding-left: 15px;
+            color: var(--cabuyao-yellow); font-size: 2rem; font-weight: 800;
+            margin-bottom: 30px; text-transform: uppercase;
+            border-left: 5px solid var(--cabuyao-yellow); padding-left: 15px;
         }
 
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
+        .admin-actions { margin-bottom: 30px; display: flex; gap: 10px; }
+        .btn-admin {
+            padding: 12px 24px; border-radius: 50px; border: none;
+            font-weight: bold; cursor: pointer; transition: 0.3s;
+            text-transform: uppercase; font-size: 0.85rem;
         }
+        .btn-add { background: var(--cabuyao-green); color: white; }
+        .btn-delete { background: #dc3545; color: white; text-decoration:none; display:inline-block; }
+        .btn-admin:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-        @media (max-width: 1100px) {
-            .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
 
-        @media (max-width: 760px) {
-            .news-grid { grid-template-columns: 1fr; }
-        }
-
-        /* --- INDIVIDUAL NEWS CARD --- */
         .news-card {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            background: white; border-radius: 15px; overflow: hidden;
+            transition: all 0.3s ease; display: flex; flex-direction: column; color: var(--text-dark);
         }
+        .news-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
 
-        .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-            border-color: #e0e0e0;
+        .news-image { width: 100%; height: 180px; object-fit: cover; background: #eee; }
+
+        .news-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .news-date { color: #d4a000; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; }
+        .news-title { color: var(--cabuyao-green); font-size: 1.25rem; font-weight: 800; margin: 0 0 10px 0; line-height: 1.2; }
+        .news-excerpt { color: var(--text-light); font-size: 0.95rem; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
+        .read-more { color: var(--cabuyao-green); text-decoration: none; font-weight: bold; font-size: 0.95rem; }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 1000; display: none; align-items: center; justify-content: center;
         }
-
-        .news-image {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            background: #e0e0e0; 
-        }
-
-        .news-content {
-            padding: 18px;
-            flex-grow: 1; 
-            display: flex;
-            flex-direction: column;
-        }
-
-        .news-date {
-            color: var(--cabuyao-yellow);
-            font-weight: 800;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .news-title {
-            color: var(--cabuyao-green);
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin: 0 0 12px 0;
-            line-height: 1.25;
-        }
-
-        .news-excerpt {
-            color: var(--text-light);
-            font-size: 0.92rem;
-            line-height: 1.45;
-            margin: 0 0 14px 0;
-            flex-grow: 1;
-        }
-
-        .read-more {
-            color: var(--cabuyao-green);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.2s;
-        }
-
-        .read-more:hover {
-            color: var(--cabuyao-yellow);
-            gap: 10px; 
-        }
-
-        @media (max-width: 768px) {
-            .news-hero h1 { font-size: 2.2rem; }
-            .content-container { margin: 40px auto; }
+        .modal-content { width: 90%; max-width: 550px; }
+        .input-ctrl {
+            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd;
+            margin-bottom: 15px; font-family: inherit; box-sizing: border-box;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="page-shell">
-            <uc:SiteHeader runat="server" ID="SiteHeader" />
-            <div class="page-content">
+        <uc:SiteHeader runat="server" ID="SiteHeader" />
+        
         <header class="news-hero">
-            <h1>NEWS & EVENTS</h1>
-            <p>Stay updated with Cabuyao City</p>
+            <h1>NEWS &amp; EVENTS</h1>
         </header>
 
         <main class="content-container">
             <div class="glass-panel">
                 <h2 class="section-title">Latest Updates</h2>
 
+                <asp:Panel ID="AdminControlsPanel" runat="server" CssClass="admin-actions">
+                    <button type="button" class="btn-admin btn-add" onclick="openModal()">Add New Article</button>
+                    <a href="ManageNews.aspx" class="btn-admin btn-delete">Manage Articles</a>
+                </asp:Panel>
+
                 <div class="news-grid">
-                    
-                    <article class="news-card">
-                        <img src="images/Cabuyao_Portal.jpg" alt="News Image" class="news-image" />
-                        <div class="news-content">
-                            <span class="news-date">March 15, 2026</span>
-                            <h3 class="news-title">City Hall Launches Digital Lost & Found Portal</h3>
-                            <p class="news-excerpt">In an effort to modernize public services, the local government has officially launched the centralized online system for recovering missing items.</p>
-                            <a href="#" class="read-more">Read Full Story ?</a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <img src="images/Batingaw.jpg" alt="News Image" class="news-image" />
-                        <div class="news-content">
-                            <span class="news-date">February 28, 2026</span>
-                            <h3 class="news-title">Preparations for the Annual Batingaw Festival</h3>
-                            <p class="news-excerpt">Citizens are gearing up for the upcoming Batingaw Festival. Expect road closures around the City Plaza and spectacular parade floats this weekend.</p>
-                            <a href="#" class="read-more">Read Full Story ?</a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <img src="images/Job_Fair.jpeg" alt="News Image" class="news-image" />
-                        <div class="news-content">
-                            <span class="news-date">February 10, 2026</span>
-                            <h3 class="news-title">Local Job Fair at Cabuyao Retail Arena</h3>
-                            <p class="news-excerpt">Over 50 companies will be participating in the mega job fair hosted by the Cabuyao Public Employment Service Office (PESO). Bring your resumes!</p>
-                            <a href="#" class="read-more">Read Full Story ?</a>
-                        </div>
-                    </article>
-
+                    <asp:Repeater ID="NewsRepeater" runat="server">
+                        <ItemTemplate>
+                            <article class="news-card">
+                                <img src='<%# string.IsNullOrEmpty(Eval("ImagePath").ToString()) ? "images/Cabuyao_Portal.jpg" : ResolveUrl("~/" + Eval("ImagePath")) %>' alt="News Image" class="news-image" />
+                                <div class="news-content">
+                                    <span class="news-date"><%# Eval("PublishDate", "{0:MMMM dd, yyyy}") %></span>
+                                    <h3 class="news-title"><%# Eval("Title") %></h3>
+                                    <p class="news-excerpt">
+                                        <%# Eval("Content").ToString().Length > 120 ? Eval("Content").ToString().Substring(0, 120) + "..." : Eval("Content") %>
+                                    </p>
+                                    <a href='ReadNews.aspx?id=<%# Eval("NewsID") %>' class="read-more">Read Full Story </a>
+                                </div>
+                            </article>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
         </main>
+
+        <div id="newsModal" class="modal-overlay">
+            <div class="glass-panel modal-content">
+                <h2 style="color:var(--cabuyao-yellow); margin-top:0;">Post News Update</h2>
+                
+                <label style="display:block; margin-bottom:5px;">Article Headline</label>
+                <asp:TextBox ID="txtNewsTitle" runat="server" CssClass="input-ctrl" placeholder="e.g. Lost ID Drive 2026"></asp:TextBox>
+                
+                <label style="display:block; margin-bottom:5px;">Upload Image</label>
+                <asp:FileUpload ID="fuNewsImage" runat="server" CssClass="input-ctrl" style="background:white;" />
+
+                <label style="display:block; margin-bottom:5px;">Details / Content</label>
+                <asp:TextBox ID="txtNewsContent" runat="server" TextMode="MultiLine" Rows="6" CssClass="input-ctrl" placeholder="Describe the event..."></asp:TextBox>
+                
+                <div style="display:flex; gap:10px;">
+                    <asp:Button ID="btnSaveNews" runat="server" Text="Publish Now" CssClass="btn-admin btn-add" OnClick="btnSaveNews_Click" style="flex:1;" />
+                    <button type="button" class="btn-admin btn-delete" onclick="closeModal()" style="flex:1;">Cancel</button>
+                </div>
             </div>
         </div>
+
         <uc:SiteFooter runat="server" ID="SiteFooter" />
+
+        <script>
+            function openModal() { document.getElementById('newsModal').style.display = 'flex'; }
+            function closeModal() { document.getElementById('newsModal').style.display = 'none'; }
+        </script>
     </form>
 </body>
 </html>
-
-

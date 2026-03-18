@@ -1,10 +1,11 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Landing.aspx.cs" Inherits="G5_FINAL_PROJECT.Landing" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Landing.aspx.cs" Inherits="G5_FINAL_PROJECT.Landing" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
 <%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Cabuyao Lost & Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
 
@@ -130,5 +131,6 @@
     </form>
 </body>
 </html>
+
 
 

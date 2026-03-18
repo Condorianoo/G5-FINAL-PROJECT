@@ -91,6 +91,10 @@
     <Content Include="AboutUs.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="NewsEvents.aspx" />
+    <Content Include="AdminDashboard.aspx" />
+    <Content Include="ClaimItem.aspx" />
+    <Content Include="ManageNews.aspx" />
+    <Content Include="ReadNews.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FindItem.aspx.cs">
@@ -171,6 +175,34 @@
     <Compile Include="NewsEvents.aspx.designer.cs">
       <DependentUpon>NewsEvents.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimItem.aspx.cs">
+      <DependentUpon>ClaimItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimItem.aspx.designer.cs">
+      <DependentUpon>ClaimItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManageNews.aspx.cs">
+      <DependentUpon>ManageNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManageNews.aspx.designer.cs">
+      <DependentUpon>ManageNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReadNews.aspx.cs">
+      <DependentUpon>ReadNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReadNews.aspx.designer.cs">
+      <DependentUpon>ReadNews.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -212,11 +244,5 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  
 </Project>

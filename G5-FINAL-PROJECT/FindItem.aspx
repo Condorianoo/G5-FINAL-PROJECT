@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FindItem.aspx.cs" Inherits="G5_FINAL_PROJECT.FindItem" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FindItem.aspx.cs" Inherits="G5_FINAL_PROJECT.FindItem" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
 <%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
@@ -6,6 +6,7 @@
 <html>
 <head runat="server">
     <title>Find Item - Cabuyao Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         :root {
@@ -23,7 +24,8 @@
             background-position: center;
             color: white;
         }
-.main-wrapper {
+        
+        .main-wrapper {
             display: flex;
             margin-top: 30px;
             padding: 0 5% 80px 5%;
@@ -32,7 +34,8 @@
         }
 
         .sidebar {
-            width: 240px;
+            width: 280px;
+            flex-shrink: 0;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
@@ -73,13 +76,56 @@
             box-sizing: border-box;
         }
 
-        .content-area { flex: 1; }
+        .btn-filter {
+            width: 100%;
+            background: var(--cabuyao-green);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 100px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-filter:hover {
+            background: #008a49;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .content-area { flex: 1; width: 100%; }
         
         .items-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
             padding-bottom: 50px;
+        }
+
+        
+        @media screen and (max-width: 1024px) {
+            .main-wrapper {
+                flex-direction: column;
+                padding: 0 20px 80px 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+                margin-bottom: 30px;
+            }
+
+            .filter-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
         }
 
         .item-card {
@@ -93,36 +139,29 @@
             text-decoration: none;
             color: white;
             box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+            display: block;
         }
 
         .item-card:hover {
             transform: translateY(-10px);
             border-color: var(--cabuyao-yellow);
-            background: rgba(255, 255, 255, 0.12);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .item-image {
-            width: 100%;
-            height: 200px;
-            background: rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: rgba(255,255,255,0.5);
+            width: 100%; height: 200px;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; color: rgba(255,255,255,0.5);
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-transform: uppercase; overflow: hidden;
         }
 
+        .item-image img { width: 100%; height: 100%; object-fit: cover; }
         .item-info { padding: 16px; }
-        .item-title { font-weight: 800; font-size: 1.1rem; margin: 0; color: white; letter-spacing: 0.5px; }
-        .item-loc { color: var(--cabuyao-yellow); font-size: 0.9rem; margin-top: 8px; font-weight: 600; }
+        .item-title { font-weight: 800; font-size: 1.1rem; margin: 0; color: white; }
+        .item-loc { color: var(--cabuyao-yellow); font-size: 0.9rem; margin-top: 8px; font-weight: 600; line-height: 1.4; }
         .item-date { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 4px; }
-
-        @media screen and (max-width: 900px) {
-            .sidebar { display: none; }
-            .main-wrapper { padding: 0 20px; }
-        }
     </style>
 </head>
 <body>
@@ -133,41 +172,50 @@
                 <div class="main-wrapper">
                     <aside class="sidebar">
                         <h2>Filters</h2>
-                        <div class="filter-group">
-                            <label>Keywords</label>
-                            <asp:TextBox ID="txtSearch" runat="server" CssClass="search-box" placeholder="Search items..."></asp:TextBox>
-                        </div>
+                        <div class="filter-container">
+                            <div class="filter-group">
+                                <label>Keywords</label>
+                                <asp:TextBox ID="txtSearch" runat="server" CssClass="search-box" placeholder="Search items or locations..."></asp:TextBox>
+                            </div>
 
-                        <div class="filter-group">
-                            <label>Category</label>
-                            <asp:DropDownList ID="ddlCategory" runat="server" CssClass="category-select">
-                                <asp:ListItem Text="All Categories" Value="All"></asp:ListItem>
-                                <asp:ListItem Text="Electronics" Value="Elec"></asp:ListItem>
-                                <asp:ListItem Text="Wallets & Bags" Value="Bags"></asp:ListItem>
-                                <asp:ListItem Text="Documents/IDs" Value="Docs"></asp:ListItem>
-                            </asp:DropDownList>
+                            <div class="filter-group">
+                                <label>Category</label>
+                                <asp:DropDownList ID="ddlCategory" runat="server" CssClass="category-select">
+                                    <asp:ListItem Text="All Categories" Value="All"></asp:ListItem>
+                                    <asp:ListItem Text="Electronics" Value="Electronics"></asp:ListItem>
+                                    <asp:ListItem Text="Wallets & Bags" Value="Wallets & Bags"></asp:ListItem>
+                                    <asp:ListItem Text="Documents/IDs" Value="Documents/IDs"></asp:ListItem>
+                                    <asp:ListItem Text="Keys & Keychains" Value="Keys"></asp:ListItem>
+                                    <asp:ListItem Text="Clothing & Accessories" Value="Clothing"></asp:ListItem>
+                                    <asp:ListItem Text="Jewelry & Watches" Value="Jewelry"></asp:ListItem>
+                                    <asp:ListItem Text="Pets/Animals" Value="Pets"></asp:ListItem>
+                                    <asp:ListItem Text="Others" Value="Others"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
                         </div>
-
-                        <div class="filter-group">
-                            <label>Location</label>
-                            <asp:DropDownList ID="ddlLocation" runat="server" CssClass="category-select">
-                                <asp:ListItem Text="All Locations" Value="All"></asp:ListItem>
-                                <asp:ListItem Text="City Hall" Value="CH"></asp:ListItem>
-                                <asp:ListItem Text="Poblacion" Value="Pob"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
+                        
+                        <asp:Button ID="btnApplyFilters" runat="server" Text="Apply Filters" 
+                            CssClass="btn-filter" OnClick="btnApplyFilters_Click" />
                     </aside>
 
                     <main class="content-area">
                         <div class="items-grid">
-                            <div class="item-card">
-                                <div class="item-image">NO IMAGE AVAILABLE</div>
-                                <div class="item-info">
-                                    <p class="item-title">Black Wallet</p>
-                                    <p class="item-loc">&#128205; Cabuyao City Hall</p>
-                                    <p class="item-date">Reported 2 hours ago</p>
-                                </div>
-                            </div>
+                            <asp:Repeater ID="rptItems" runat="server">
+                                <ItemTemplate>
+                                    <a href='ClaimItem.aspx?id=<%# Eval("ItemID") %>' class="item-card">
+                                        <div class="item-image">
+                                            <%# string.IsNullOrEmpty(Eval("ImagePath")?.ToString()) ? 
+                                                Eval("Type") + " ITEM" : 
+                                                "<img src='" + Eval("ImagePath") + "' alt='Item Image' />" %>
+                                        </div>
+                                        <div class="item-info">
+                                            <p class="item-title"><%# Eval("Title") %></p>
+                                            <p class="item-loc"><%# Eval("Description") %></p>
+                                            <p class="item-date">Status: Active Report</p>
+                                        </div>
+                                    </a>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </div>
                     </main>
                 </div>
@@ -177,5 +225,3 @@
     </form>
 </body>
 </html>
-
-

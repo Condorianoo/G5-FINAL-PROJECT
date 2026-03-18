@@ -1,0 +1,114 @@
+﻿
+
+
+
+
+
+
+
+
+namespace G5_FINAL_PROJECT
+{
+
+
+    public partial class ClaimItem
+    {
+
+
+
+
+
+
+
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+
+
+
+
+
+
+        protected global::G5_FINAL_PROJECT.SiteHeader SiteHeader;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Panel pnlClaimForm;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Image imgItem;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Label lblItemTitle;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Label lblItemDesc;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.TextBox txtProof;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Button btnSubmitClaim;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Panel pnlSuccess;
+
+
+
+
+
+
+
+        protected global::System.Web.UI.WebControls.Literal litItemName;
+
+
+
+
+
+
+
+        protected global::G5_FINAL_PROJECT.Footer SiteFooter;
+    }
+}
+

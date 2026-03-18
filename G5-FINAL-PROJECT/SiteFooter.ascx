@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteFooter.ascx.cs" Inherits="G5_FINAL_PROJECT.Footer" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteFooter.ascx.cs" Inherits="G5_FINAL_PROJECT.Footer" %>
 
 <style>
     footer {
@@ -9,6 +9,8 @@
         font-size: 0.9rem;
         flex-shrink: 0;
         margin-top: auto;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .footer-container {
@@ -48,7 +50,7 @@
 <footer>
     <div class="footer-container">
         <div class="footer-col footer-brand">
-            <h2>CABUYAO PORTAL</h2>
+            <h2>CABUYAO LOST AND FOUND</h2>
             <p>&copy; 2026 Cabuyao City Lost and Found Recovery. All Rights Reserved.</p>
         </div>
         <div class="footer-col">
@@ -85,3 +87,4 @@
         </div>
     </div>
 </footer>
+

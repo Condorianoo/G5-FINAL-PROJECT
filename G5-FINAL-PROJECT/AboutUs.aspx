@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="G5_FINAL_PROJECT.AboutUs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="G5_FINAL_PROJECT.AboutUs" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
 <%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
@@ -23,7 +23,7 @@
             background-position: center;
             color: white;
         }
-/* Main Content Container */
+
         .content-container {
             display: flex;
             justify-content: center;
@@ -42,7 +42,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
-        /* --- DEVELOPERS SECTION --- */
+        
         .dev-section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -111,7 +111,7 @@
             margin: 0;
         }
 
-        /* --- ABOUT THE PORTAL SECTION --- */
+        
         .about-section {
             margin-top: 60px;
             padding-top: 40px;
@@ -252,5 +252,6 @@
     </form>
 </body>
 </html>
+
 
 

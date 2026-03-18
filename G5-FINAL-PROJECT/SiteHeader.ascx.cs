@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Web.UI.HtmlControls;
 
 namespace G5_FINAL_PROJECT
 {
@@ -6,7 +7,54 @@ namespace G5_FINAL_PROJECT
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Shared header control has no dynamic logic for now.
+
+            if (!IsPostBack)
+            {
+                CheckUserStatus();
+            }
+        }
+
+        private void CheckUserStatus()
+        {
+            if (Session["UserID"] != null && Session["Role"] != null)
+            {
+
+                pnlGuest.Visible = false;
+                pnlLoggedIn.Visible = true;
+
+                string role = Session["Role"].ToString();
+
+                string name = Session["FullName"] != null ? Session["FullName"].ToString() : "User";
+
+                if (role == "Admin")
+                {
+                    lblRoleBadge.Text = " " + name.ToUpper() + " (ADMIN)";
+                    lblRoleBadge.ForeColor = System.Drawing.Color.Goldenrod;
+
+                    lnkDashboard.Visible = true;
+                }
+                else
+                {
+                    lblRoleBadge.Text = name.ToUpper();
+
+                    lnkDashboard.Visible = false;
+                }
+            }
+            else
+            {
+
+                pnlGuest.Visible = true;
+                pnlLoggedIn.Visible = false;
+            }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+
+            Session.Clear();
+            Session.Abandon();
+
+            Response.Redirect("Login.aspx");
         }
     }
 }

@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="G5_FINAL_PROJECT.Menu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="G5_FINAL_PROJECT.Menu" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
 <%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
@@ -21,7 +21,7 @@
             background-size: cover; 
             background-attachment: fixed;
             background-position: center;
-            overflow-x: hidden; /* avoid horizontal shift */
+            overflow-x: hidden; 
         }
 
         .choice-container {
@@ -112,13 +112,13 @@
             <div class="page-content">
                 <div class="choice-container">
                     <a href="FindItem.aspx" class="glass-card">
-                        <span class="icon-box">&#128269;</span>
+                        
                         <h2>I LOST SOMETHING</h2>
                         <p>Access the missing item database</p>
                     </a>
 
                     <a href="ReportItem.aspx" class="glass-card">
-                        <span class="icon-box">&#129309;</span>
+                        
                         <h2>I FOUND SOMETHING</h2>
                         <p>Submit or report a missing item</p>
                     </a>
@@ -129,6 +129,7 @@
     </form>
 </body>
 </html>
+
 
 
 
