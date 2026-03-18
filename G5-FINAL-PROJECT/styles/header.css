@@ -1,12 +1,63 @@
 :root {
     --cabuyao-green: #006837;
     --cabuyao-yellow: #FFD700;
+    --scale-body: 0.7;
 }
 
 html {
     overflow-y: scroll; /* reserve scrollbar width across all pages */
+    overflow-x: hidden;
+    height: 100%;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+/* Layout scaffolding */
+body > form {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+body > form > .page-shell {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    width: 100%;
+    align-items: center;
+}
+
+.page-shell > .mcl-nav {
+    align-self: stretch;
+    width: 100%;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: 1400px;
+    transform: scale(var(--scale-body));
+    transform-origin: top center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    min-height: calc(100vh / var(--scale-body));
+}
+
+body > form > footer {
+    width: 100%;
+    margin-top: 0;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+/* Header / nav */
 .mcl-nav {
     background: white;
     display: flex;
@@ -53,4 +104,23 @@ html {
 .nav-link:hover,
 .nav-link.active {
     color: var(--cabuyao-yellow);
+}
+
+.login-btn {
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 2px solid var(--cabuyao-green);
+    background: var(--cabuyao-green);
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #008a49;
+    color: #fff;
+    border-color: var(--cabuyao-yellow);
 }

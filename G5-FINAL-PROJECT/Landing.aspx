@@ -1,9 +1,11 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Landing.aspx.cs" Inherits="G5_FINAL_PROJECT.Landing" %>
-
+<%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
+<%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Cabuyao Lost & Found</title>
+    <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
 
         body, html {
@@ -108,18 +110,23 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="hero-section">
-            <div class="hero-content">
-                <h1 class="cabuyao-title">CABUYAO CITY</h1>
-                
-                <div class="subtitle-container">
-                    <p class="cabuyao-subtitle">Official Lost and Found Recovery Portal</p>
+        <div class="page-shell">
+            <div class="page-content">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="cabuyao-title">CABUYAO CITY</h1>
+                        
+                        <div class="subtitle-container">
+                            <p class="cabuyao-subtitle">Official Lost and Found Recovery Portal</p>
+                        </div>
+                        <br />
+                        <asp:Button ID="btnContinue" runat="server" Text="ENTER SYSTEM" 
+                            CssClass="continue-btn" OnClick="btnContinue_Click" />
+                    </div>
                 </div>
-                <br />
-                <asp:Button ID="btnContinue" runat="server" Text="ENTER SYSTEM" 
-                    CssClass="continue-btn" OnClick="btnContinue_Click" />
             </div>
         </div>
+        <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>
 </html>

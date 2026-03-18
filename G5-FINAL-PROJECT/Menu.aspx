@@ -26,24 +26,53 @@
 
         .choice-container {
             display: flex;
+            flex-wrap: nowrap;
             justify-content: center;
             align-items: center;
-            gap: 50px;
-            height: 80vh;
-            padding: 0 10%;
+            gap: min(6vw, 2.5rem);
+            min-height: 85vh;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12vh 6vw 10vh 6vw;
+            box-sizing: border-box;
+            flex: 1 0 auto;
         }
 
         .glass-card {
             background: #ffffff;
             border: 2px solid rgba(0, 104, 55, 0.2);
-            border-radius: 30px;
-            width: 400px;
-            padding: 60px 40px;
+            border-radius: 24px;
+            flex: 0 1 460px;
+            width: clamp(380px, 42vw, 520px);
+            padding: 10px 52px;
             text-align: center;
             color: var(--cabuyao-green);
             transition: all 0.35s ease;
             text-decoration: none;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 96px;
+            box-sizing: border-box;
+            gap: 12px;
+        }
+
+        .glass-card h2 {
+            min-height: 2.6em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+
+        @media (max-width: 800px) {
+            .choice-container { flex-wrap: wrap; }
+            .glass-card { flex: 1 1 100%; max-width: 480px; }
         }
 
         .glass-card:hover {
@@ -54,43 +83,47 @@
 
         .icon-box {
             font-size: 4.5rem;
-            margin-bottom: 25px;
+            margin-bottom: 4px;
             display: block;
             color: var(--cabuyao-green);
         }
 
         .glass-card h2 { 
             font-size: 2rem; 
-            margin-bottom: 15px; 
+            margin-bottom: 8px; 
             letter-spacing: 2px;
             font-weight: 800;
             color: var(--cabuyao-green);
         }
 
         .glass-card p { 
-            color: var(--cabuyao-yellow); 
-            line-height: 1.7; 
-            font-size: 1rem;
-            font-weight: 500;
+            color: #8A7300; 
+            line-height: 1.4; 
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <uc:SiteHeader runat="server" ID="SiteHeader" />
+        <div class="page-shell">
+            <uc:SiteHeader runat="server" ID="SiteHeader" />
+            <div class="page-content">
+                <div class="choice-container">
+                    <a href="FindItem.aspx" class="glass-card">
+                        <span class="icon-box">&#128269;</span>
+                        <h2>I LOST SOMETHING</h2>
+                        <p>Access the missing item database</p>
+                    </a>
 
-        <div class="choice-container">
-            <a href="FindItem.aspx" class="glass-card">
-                <span class="icon-box">&#128269;</span>
-                <h2>I LOST SOMETHING</h2>
-                <p>Browse our verified database of found items to reclaim your missing belongings.</p>
-            </a>
-
-            <a href="ReportItem.aspx" class="glass-card">
-                <span class="icon-box">&#129309;</span>
-                <h2>I FOUND SOMETHING</h2>
-                <p>Register an item you've found to help connect it with its rightful owner.</p>
-            </a>
+                    <a href="ReportItem.aspx" class="glass-card">
+                        <span class="icon-box">&#129309;</span>
+                        <h2>I FOUND SOMETHING</h2>
+                        <p>Submit or report a missing item</p>
+                    </a>
+                </div>
+            </div>
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>

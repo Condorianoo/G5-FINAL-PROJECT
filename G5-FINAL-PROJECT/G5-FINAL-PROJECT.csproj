@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FindItem.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Register.aspx" />
     <Content Include="SiteFooter.ascx" />
     <Content Include="SiteHeader.ascx" />
     <Content Include="styles\header.css" />
@@ -97,6 +99,20 @@
     </Compile>
     <Compile Include="FindItem.aspx.designer.cs">
       <DependentUpon>FindItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteFooter.ascx.cs">
       <DependentUpon>SiteFooter.ascx</DependentUpon>

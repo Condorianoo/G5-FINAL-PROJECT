@@ -51,9 +51,9 @@
 
         /* --- NEWS GRID SECTION --- */
         .content-container {
-            max-width: 1200px;
+            max-width: 1180px;
             margin: -70px auto -20px auto;
-            padding: 0 20px;
+            padding: 0 16px;
         }
 
         .glass-panel {
@@ -63,6 +63,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15); 
             border-radius: 18px;
             padding: 28px; /* add internal space so content sits lower like the contact form */
+            margin-bottom: 48px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.35);
         }
 
@@ -78,17 +79,25 @@
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        @media (max-width: 1100px) {
+            .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 760px) {
+            .news-grid { grid-template-columns: 1fr; }
         }
 
         /* --- INDIVIDUAL NEWS CARD --- */
         .news-card {
             background: white;
             border: 1px solid #eee;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -102,13 +111,13 @@
 
         .news-image {
             width: 100%;
-            height: 200px;
+            height: 160px;
             object-fit: cover;
             background: #e0e0e0; 
         }
 
         .news-content {
-            padding: 25px;
+            padding: 18px;
             flex-grow: 1; 
             display: flex;
             flex-direction: column;
@@ -125,17 +134,17 @@
 
         .news-title {
             color: var(--cabuyao-green);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            margin: 0 0 15px 0;
-            line-height: 1.3;
+            margin: 0 0 12px 0;
+            line-height: 1.25;
         }
 
         .news-excerpt {
             color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0 0 20px 0;
+            font-size: 0.92rem;
+            line-height: 1.45;
+            margin: 0 0 14px 0;
             flex-grow: 1;
         }
 
@@ -163,8 +172,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <uc:SiteHeader runat="server" ID="SiteHeader" />
-
+        <div class="page-shell">
+            <uc:SiteHeader runat="server" ID="SiteHeader" />
+            <div class="page-content">
         <header class="news-hero">
             <h1>NEWS & EVENTS</h1>
             <p>Stay updated with Cabuyao City</p>
@@ -209,6 +219,8 @@
                 </div>
             </div>
         </main>
+            </div>
+        </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
 </body>

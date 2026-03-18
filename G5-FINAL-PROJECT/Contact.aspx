@@ -182,8 +182,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <uc:SiteHeader runat="server" ID="SiteHeader" />
-
+        <div class="page-shell">
+            <uc:SiteHeader runat="server" ID="SiteHeader" />
+            <div class="page-content">
         <header class="contact-hero">
             <h1>CONTACT US</h1>
             </header>
@@ -243,6 +244,8 @@
                 allowfullscreen="" 
                 loading="lazy">
             </iframe>
+        </div>
+            </div>
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>

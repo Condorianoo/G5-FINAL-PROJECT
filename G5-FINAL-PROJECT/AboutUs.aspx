@@ -179,8 +179,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <uc:SiteHeader runat="server" ID="SiteHeader" />
-
+        <div class="page-shell">
+            <uc:SiteHeader runat="server" ID="SiteHeader" />
+            <div class="page-content">
         <div class="content-container">
             <div class="glass-panel">
                 
@@ -244,6 +245,7 @@
                     </div>
                 </div>
 
+            </div>
             </div>
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />

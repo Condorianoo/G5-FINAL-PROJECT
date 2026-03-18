@@ -127,48 +127,51 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <uc:SiteHeader runat="server" ID="SiteHeader" />
-
-        <div class="main-wrapper">
-            <aside class="sidebar">
-                <h2>Filters</h2>
-                <div class="filter-group">
-                    <label>Keywords</label>
-                    <asp:TextBox ID="txtSearch" runat="server" CssClass="search-box" placeholder="Search items..."></asp:TextBox>
-                </div>
-
-                <div class="filter-group">
-                    <label>Category</label>
-                    <asp:DropDownList ID="ddlCategory" runat="server" CssClass="category-select">
-                        <asp:ListItem Text="All Categories" Value="All"></asp:ListItem>
-                        <asp:ListItem Text="Electronics" Value="Elec"></asp:ListItem>
-                        <asp:ListItem Text="Wallets & Bags" Value="Bags"></asp:ListItem>
-                        <asp:ListItem Text="Documents/IDs" Value="Docs"></asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-
-                <div class="filter-group">
-                    <label>Location</label>
-                    <asp:DropDownList ID="ddlLocation" runat="server" CssClass="category-select">
-                        <asp:ListItem Text="All Locations" Value="All"></asp:ListItem>
-                        <asp:ListItem Text="City Hall" Value="CH"></asp:ListItem>
-                        <asp:ListItem Text="Poblacion" Value="Pob"></asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-            </aside>
-
-            <main class="content-area">
-                <div class="items-grid">
-                    <div class="item-card">
-                        <div class="item-image">NO IMAGE AVAILABLE</div>
-                        <div class="item-info">
-                            <p class="item-title">Black Wallet</p>
-                            <p class="item-loc">&#128205; Cabuyao City Hall</p>
-                            <p class="item-date">Reported 2 hours ago</p>
+        <div class="page-shell">
+            <uc:SiteHeader runat="server" ID="SiteHeader" />
+            <div class="page-content">
+                <div class="main-wrapper">
+                    <aside class="sidebar">
+                        <h2>Filters</h2>
+                        <div class="filter-group">
+                            <label>Keywords</label>
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="search-box" placeholder="Search items..."></asp:TextBox>
                         </div>
-                    </div>
+
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <asp:DropDownList ID="ddlCategory" runat="server" CssClass="category-select">
+                                <asp:ListItem Text="All Categories" Value="All"></asp:ListItem>
+                                <asp:ListItem Text="Electronics" Value="Elec"></asp:ListItem>
+                                <asp:ListItem Text="Wallets & Bags" Value="Bags"></asp:ListItem>
+                                <asp:ListItem Text="Documents/IDs" Value="Docs"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Location</label>
+                            <asp:DropDownList ID="ddlLocation" runat="server" CssClass="category-select">
+                                <asp:ListItem Text="All Locations" Value="All"></asp:ListItem>
+                                <asp:ListItem Text="City Hall" Value="CH"></asp:ListItem>
+                                <asp:ListItem Text="Poblacion" Value="Pob"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </aside>
+
+                    <main class="content-area">
+                        <div class="items-grid">
+                            <div class="item-card">
+                                <div class="item-image">NO IMAGE AVAILABLE</div>
+                                <div class="item-info">
+                                    <p class="item-title">Black Wallet</p>
+                                    <p class="item-loc">&#128205; Cabuyao City Hall</p>
+                                    <p class="item-date">Reported 2 hours ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
                 </div>
-            </main>
+            </div>
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>

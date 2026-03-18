@@ -122,51 +122,54 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <uc:SiteHeader runat="server" ID="SiteHeader" />
+        <div class="page-shell">
+            <uc:SiteHeader runat="server" ID="SiteHeader" />
+            <div class="page-content">
+                <div class="main-wrapper">
+                    <main class="content-area">
+                        <div class="glass-form">
+                            <h2>Report Found Item</h2>
+                            
+                            <div class="form-group">
+                                <label>Item Name</label>
+                                <asp:TextBox ID="txtName" runat="server" CssClass="input-ctrl" placeholder="Item Name"></asp:TextBox>
+                            </div>
 
-        <div class="main-wrapper">
-            <main class="content-area">
-                <div class="glass-form">
-                    <h2>Report Found Item</h2>
-                    
-                    <div class="form-group">
-                        <label>Item Name</label>
-                        <asp:TextBox ID="txtName" runat="server" CssClass="input-ctrl" placeholder="Item Name"></asp:TextBox>
-                    </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <asp:DropDownList ID="ddlCat" runat="server" CssClass="input-ctrl">
+                                    <asp:ListItem Text="Select Category" Value=""></asp:ListItem>
+                                    <asp:ListItem Text="Electronics" Value="Elec"></asp:ListItem>
+                                    <asp:ListItem Text="Wallets & Bags" Value="Bags"></asp:ListItem>
+                                    <asp:ListItem Text="Documents/IDs" Value="Docs"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
 
-                    <div class="form-group">
-                        <label>Category</label>
-                        <asp:DropDownList ID="ddlCat" runat="server" CssClass="input-ctrl">
-                            <asp:ListItem Text="Select Category" Value=""></asp:ListItem>
-                            <asp:ListItem Text="Electronics" Value="Elec"></asp:ListItem>
-                            <asp:ListItem Text="Wallets & Bags" Value="Bags"></asp:ListItem>
-                            <asp:ListItem Text="Documents/IDs" Value="Docs"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
+                            <div class="form-group">
+                                <label>Upload Media</label>
+                                <div class="file-area">
+                                    <asp:FileUpload ID="fuMedia" runat="server" AllowMultiple="true" ForeColor="White" />
+                                </div>
+                            </div>
 
-                    <div class="form-group">
-                        <label>Upload Media</label>
-                        <div class="file-area">
-                            <asp:FileUpload ID="fuMedia" runat="server" AllowMultiple="true" ForeColor="White" />
+                            <div class="form-group">
+                                <label>Current Status</label>
+                                <asp:RadioButtonList ID="rblStatus" runat="server" CssClass="radio-list">
+                                    <asp:ListItem Text=" I have the item" Value="Me"></asp:ListItem>
+                                    <asp:ListItem Text=" Surrendered to Gov/Police" Value="Gov"></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contact/Location Details</label>
+                                <asp:TextBox ID="txtContact" runat="server" CssClass="input-ctrl" TextMode="MultiLine" Rows="3" placeholder="Provide contact info or surrender location"></asp:TextBox>
+                            </div>
+
+                            <asp:Button ID="btnSubmit" runat="server" Text="Submit Report" CssClass="submit-btn" />
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Current Status</label>
-                        <asp:RadioButtonList ID="rblStatus" runat="server" CssClass="radio-list">
-                            <asp:ListItem Text=" I have the item" Value="Me"></asp:ListItem>
-                            <asp:ListItem Text=" Surrendered to Gov/Police" Value="Gov"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Contact/Location Details</label>
-                        <asp:TextBox ID="txtContact" runat="server" CssClass="input-ctrl" TextMode="MultiLine" Rows="3" placeholder="Provide contact info or surrender location"></asp:TextBox>
-                    </div>
-
-                    <asp:Button ID="btnSubmit" runat="server" Text="Submit Report" CssClass="submit-btn" />
+                    </main>
                 </div>
-            </main>
+            </div>
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>

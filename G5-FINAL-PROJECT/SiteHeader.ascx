@@ -11,5 +11,6 @@
         <a href="NewsEvents.aspx" class="nav-link">News</a>
         <a href="AboutUs.aspx" class="nav-link">About Us</a>
         <a href="Contact.aspx" class="nav-link">Contact</a>
+        <a href="Login.aspx" class="login-btn">Login</a>
     </div>
 </header>
