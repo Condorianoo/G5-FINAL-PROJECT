@@ -11,7 +11,7 @@ namespace G5_FINAL_PROJECT
 {
 
 
-    public partial class SecondPage
+    public partial class Landing
     {
 
         /// <summary>
@@ -33,12 +33,12 @@ namespace G5_FINAL_PROJECT
         protected global::G5_FINAL_PROJECT.SiteHeader SiteHeader;
 
         /// <summary>
-        /// SiteFooter control.
+        /// btnContinue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::G5_FINAL_PROJECT.Footer SiteFooter;
+        protected global::System.Web.UI.WebControls.Button btnContinue;
     }
 }

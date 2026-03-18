@@ -7,7 +7,7 @@
         </h2>
     </div>
     <div class="nav-links">
-        <a href="SecondPage.aspx" class="nav-link">Home</a>
+        <a href="Menu.aspx" class="nav-link">Home</a>
         <a href="NewsEvents.aspx" class="nav-link">News</a>
         <a href="AboutUs.aspx" class="nav-link">About Us</a>
         <a href="Contact.aspx" class="nav-link">Contact</a>

@@ -11,7 +11,7 @@ namespace G5_FINAL_PROJECT
 {
 
 
-    public partial class HomePage
+    public partial class Menu
     {
 
         /// <summary>
@@ -33,12 +33,12 @@ namespace G5_FINAL_PROJECT
         protected global::G5_FINAL_PROJECT.SiteHeader SiteHeader;
 
         /// <summary>
-        /// btnContinue control.
+        /// SiteFooter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnContinue;
+        protected global::G5_FINAL_PROJECT.Footer SiteFooter;
     }
 }

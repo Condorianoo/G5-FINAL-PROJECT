@@ -84,8 +84,8 @@
     <Content Include="images\Quennu.jpg" />
     <Content Include="ReportItem.aspx" />
     <Content Include="Web.config" />
-    <Content Include="HomePage.aspx" />
-    <Content Include="SecondPage.aspx" />
+    <Content Include="Landing.aspx" />
+    <Content Include="Menu.aspx" />
     <Content Include="AboutUs.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="NewsEvents.aspx" />
@@ -113,12 +113,12 @@
       <DependentUpon>SiteHeader.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="HomePage.aspx.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
+    <Compile Include="Landing.aspx.cs">
+      <DependentUpon>Landing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HomePage.aspx.designer.cs">
-      <DependentUpon>HomePage.aspx</DependentUpon>
+    <Compile Include="Landing.aspx.designer.cs">
+      <DependentUpon>Landing.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportItem.aspx.cs">
       <DependentUpon>ReportItem.aspx</DependentUpon>
@@ -127,12 +127,12 @@
     <Compile Include="ReportItem.aspx.designer.cs">
       <DependentUpon>ReportItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SecondPage.aspx.cs">
-      <DependentUpon>SecondPage.aspx</DependentUpon>
+    <Compile Include="Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SecondPage.aspx.designer.cs">
-      <DependentUpon>SecondPage.aspx</DependentUpon>
+    <Compile Include="Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="AboutUs.aspx.cs">
       <DependentUpon>AboutUs.aspx</DependentUpon>

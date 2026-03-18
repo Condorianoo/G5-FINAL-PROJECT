@@ -56,7 +56,7 @@
             <ul>
                 <li><a href="FindItem.aspx">Find Lost Items</a></li>
                 <li><a href="ReportItem.aspx">Report Found Item</a></li>
-                <li><a href="SecondPage.aspx">Main Portal</a></li>
+                <li><a href="Menu.aspx">Main Portal</a></li>
             </ul>
         </div>
         <div class="footer-col">
