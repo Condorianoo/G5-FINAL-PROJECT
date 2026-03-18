@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="G5_FINAL_PROJECT.AboutUs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="G5_FINAL_PROJECT.AboutUs" %>
 <%@ Register Src="~/SiteHeader.ascx" TagPrefix="uc" TagName="SiteHeader" %>
 <%@ Register Src="~/SiteFooter.ascx" TagPrefix="uc" TagName="SiteFooter" %>
 
@@ -218,10 +218,10 @@
                     </div>
 
                     <div class="dev-card">
-                        <img src="images/Barbiera.jpg" alt="Developer" class="dev-image" />
+                        <img src="images/Babiera.jpg" alt="Developer" class="dev-image" />
                         <h4 class="dev-name">Fitzgerald Babiera</h4>
                         <p class="dev-role">Project Manager</p>
-                        <p class="dev-bio">Sorry wala ako masyado alam sayo -Quennu</p>
+                        <p class="dev-bio">Gundam addict na broke, Valorant addict na hardstuck Bronze 😔🥀</p>
                     </div>
                 </div>
 
