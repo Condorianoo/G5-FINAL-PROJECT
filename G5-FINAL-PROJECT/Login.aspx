@@ -136,11 +136,28 @@
                         <div class="input-group">
                             <label>Email Address</label>
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="login-input" placeholder="name@email.com"></asp:TextBox>
+                            
+                            <!-- Makes sure there's an input -->
+                            <asp:RequiredFieldValidator ID="rfvEmail" runat="server" 
+                                ControlToValidate="txtEmail" ErrorMessage="* Required" 
+                                ForeColor="Red" Display="Dynamic" />
+
+                            <!-- Checks if email in correct format -->
+                            <asp:RegularExpressionValidator ID="revEmail" runat="server" 
+                                ControlToValidate="txtEmail" 
+                                ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" 
+                                ErrorMessage="Invalid email format" ForeColor="Red" Display="Dynamic" />
                         </div>
 
                         <div class="input-group">
                             <label>Password</label>
                             <asp:TextBox ID="txtPassword" runat="server" CssClass="login-input" TextMode="Password" placeholder=""></asp:TextBox>
+
+                            <!-- Makes sure there's an input -->
+                            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" 
+                                ControlToValidate="txtPassword" ErrorMessage="* Required" 
+                                ForeColor="Red" Display="Dynamic" />
+                                
                             <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
                         </div>
 

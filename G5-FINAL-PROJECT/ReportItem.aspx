@@ -131,6 +131,11 @@
                             <div class="form-group">
                                 <label>Item Name</label>
                                 <asp:TextBox ID="txtName" runat="server" CssClass="input-ctrl" placeholder="e.g. Blue Umbrella"></asp:TextBox>
+
+                                <!-- Makes sure there's an input -->
+                                <asp:RequiredFieldValidator ID="rfvName" runat="server" 
+                                    ControlToValidate="txtName" ErrorMessage="* Required" 
+                                    ForeColor="Red" Display="Dynamic" />
                             </div>
 
                             <div class="form-group">
@@ -146,6 +151,12 @@
                                     <asp:ListItem Text="Pets/Animals" Value="Pets"></asp:ListItem>
                                     <asp:ListItem Text="Others" Value="Others"></asp:ListItem>
                                 </asp:DropDownList>
+
+                                <!-- Makes sure there's an input -->
+                                <asp:RequiredFieldValidator ID="rfvCat" runat="server" 
+                                    ControlToValidate="ddlCat" InitialValue="" 
+                                    ErrorMessage="* Please select a category" 
+                                    ForeColor="Red" Display="Dynamic" />
                             </div>
 
                             <div class="form-group">
@@ -161,11 +172,22 @@
                                     <asp:ListItem Text=" I have the item" Value="Me" Selected="True"></asp:ListItem>
                                     <asp:ListItem Text=" Surrendered to Gov/Police" Value="Gov"></asp:ListItem>
                                 </asp:RadioButtonList>
+
+                                <!-- Makes sure there's an input -->
+                                <asp:RequiredFieldValidator ID="rfvStatus" runat="server" 
+                                    ControlToValidate="rblStatus" 
+                                    ErrorMessage="* Please select a status" 
+                                    ForeColor="Red" Display="Dynamic" />
                             </div>
 
                             <div class="form-group">
                                 <label>Contact/Location Details</label>
                                 <asp:TextBox ID="txtContact" runat="server" CssClass="input-ctrl" TextMode="MultiLine" Rows="3" placeholder="Provide contact info or surrender location"></asp:TextBox>
+
+                                <!-- Makes sure there's an input -->
+                                <asp:RequiredFieldValidator ID="rfvContact" runat="server" 
+                                    ControlToValidate="txtContact" ErrorMessage="* Required" 
+                                    ForeColor="Red" Display="Dynamic" />
                             </div>
 
                             <asp:Button ID="btnSubmit" runat="server" Text="Submit Report" CssClass="submit-btn" OnClick="btnSubmit_Click" />

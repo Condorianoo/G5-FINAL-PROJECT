@@ -14,12 +14,7 @@ namespace G5_FINAL_PROJECT
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-
-            if (txtPassword.Text != txtConfirm.Text)
-            {
-                lblMessage.Text = "Passwords do not match!";
-                return;
-            }
+            if (!Page.IsValid) return;
 
             string connStr = ConfigurationManager.ConnectionStrings["CabuyaoDB"].ConnectionString;
 
