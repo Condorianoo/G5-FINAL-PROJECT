@@ -219,10 +219,10 @@
                     </div>
 
                     <div class="dev-card">
-                        <img src="images/Barbiera.jpg" alt="Developer" class="dev-image" />
+                        <img src="images/Babiera.jpg" alt="Developer" class="dev-image" />
                         <h4 class="dev-name">Fitzgerald Babiera</h4>
                         <p class="dev-role">Project Manager</p>
-                        <p class="dev-bio">Sorry wala ako masyado alam sayo -Quennu</p>
+                        <p class="dev-bio">Gundam addict na broke, Valorant addict na hardstuck Bronze 😔🥀</p>
                     </div>
                 </div>
 

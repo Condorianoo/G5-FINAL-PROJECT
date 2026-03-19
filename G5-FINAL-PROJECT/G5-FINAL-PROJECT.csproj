@@ -68,13 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FindItem.aspx" />
+    <Content Include="images\Babiera.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="SiteFooter.ascx" />
     <Content Include="SiteHeader.ascx" />
     <Content Include="styles\header.css" />
     <Content Include="images\Aeron.jpg" />
-    <Content Include="images\Barbiera.jpg" />
     <Content Include="images\Batingaw.jpg" />
     <Content Include="images\Black_Wallet.jpg" />
     <Content Include="images\CabuyaoCityHalljf7175_10.JPG" />
@@ -244,5 +244,4 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  
 </Project>
