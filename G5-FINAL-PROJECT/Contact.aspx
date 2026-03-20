@@ -108,6 +108,12 @@
                 </div>
                 <div class="input-group">
                     <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" CssClass="input-control" placeholder="Email Address"></asp:TextBox>
+
+                    <!-- Ensures email is valid -->
+                    <asp:RegularExpressionValidator ID="revEmail" runat="server" 
+                        ControlToValidate="txtEmail" 
+                        ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" 
+                        ErrorMessage="Invalid email format." ForeColor="Red" Display="Dynamic" />
                 </div>
                 <div class="input-group">
                     <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Rows="5" CssClass="input-control" placeholder="Write your message here..."></asp:TextBox>
