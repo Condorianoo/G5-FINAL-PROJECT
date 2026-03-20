@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI;
+using Microsoft.AspNet.Identity;
 
 namespace G5_FINAL_PROJECT
 {
@@ -17,24 +18,33 @@ namespace G5_FINAL_PROJECT
             using (SqlConnection conn = new SqlConnection(connStr))
             {
 
-                string query = "SELECT UserID, Role, FullName FROM Users WHERE Email=@Email AND PasswordHash=@Pass";
+                string query = "SELECT UserID, Role, FullName, PasswordHash FROM Users WHERE Email=@Email";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@Pass", txtPassword.Text);
 
                     conn.Open();
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
+                            string storedHash = reader["PasswordHash"].ToString();
+                            var passwordHasher = new PasswordHasher();
+                            var verificationResult = passwordHasher.VerifyHashedPassword(storedHash, txtPassword.Text);
 
-                            Session["UserID"] = reader["UserID"].ToString();
-                            Session["Role"] = reader["Role"].ToString();
-                            Session["FullName"] = reader["FullName"].ToString(); // This passes the name to the header!
+                            if (verificationResult == PasswordVerificationResult.Success || verificationResult == PasswordVerificationResult.SuccessRehashNeeded)
+                            {
+                                Session["UserID"] = reader["UserID"].ToString();
+                                Session["Role"] = reader["Role"].ToString();
+                                Session["FullName"] = reader["FullName"].ToString(); // This passes the name to the header!
 
-                            Response.Redirect("Menu.aspx");
+                                Response.Redirect("Menu.aspx");
+                            }
+                            else
+                            {
+                                lblError.Text = "Invalid email or password.";
+                            }
                         }
                         else
                         {

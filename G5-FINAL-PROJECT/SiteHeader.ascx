@@ -8,23 +8,52 @@
         </h2>
     </div>
     
-    <div class="nav-links" style="display: flex; align-items: center; gap: 20px;">
-        <a href="Menu.aspx" class="nav-link">HOME</a>
-        <a href="NewsEvents.aspx" class="nav-link">NEWS</a>
-        <a href="AboutUs.aspx" class="nav-link">ABOUT US</a>
-        <a href="Contact.aspx" class="nav-link">CONTACT</a>
+    <div class="nav-links">
+        <div class="nav-left-links">
+            <a href="Menu.aspx" class="nav-link">HOME</a>
+            <a href="NewsEvents.aspx" class="nav-link">NEWS</a>
+            <a href="AboutUs.aspx" class="nav-link">ABOUT US</a>
+            <a href="Contact.aspx" class="nav-link">CONTACT</a>
+        </div>
         
-        <asp:Panel ID="pnlGuest" runat="server" style="display: flex; align-items: center;">
+        <asp:Panel ID="pnlGuest" runat="server" CssClass="nav-auth">
             <a href="Login.aspx" class="login-btn">LOGIN</a>
         </asp:Panel>
 
-        <asp:Panel ID="pnlLoggedIn" runat="server" Visible="false" style="display: flex; align-items: center; gap: 15px;">
+        <asp:Panel ID="pnlLoggedIn" runat="server" Visible="false" CssClass="nav-auth">
             
             <asp:HyperLink ID="lnkDashboard" runat="server" NavigateUrl="~/AdminDashboard.aspx" CssClass="nav-link" Visible="false" style="color: #FFD700; font-weight: bold;">DASHBOARD</asp:HyperLink>
             
-            <asp:Label ID="lblRoleBadge" runat="server" CssClass="nav-link" style="cursor: default; pointer-events: none;"></asp:Label>
-            
-            <asp:Button ID="btnLogout" runat="server" Text="LOGOUT" CssClass="login-btn" OnClick="btnLogout_Click" style="border: none; cursor: pointer; font-family: inherit; font-size: inherit; font-weight: bold; display: flex; align-items: center; justify-content: center;" />
+            <div class="profile-menu" id="profileMenu">
+                <a href="#" class="profile-button" onclick="toggleProfileMenu(event);">
+                    <span class="profile-name"><asp:Label ID="lblDisplayName" runat="server" /></span>
+                    <asp:Label ID="lblRoleBadge" runat="server" CssClass="profile-role" Visible="false"></asp:Label>
+                    <span class="profile-caret">▼</span>
+                </a>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="ChangePassword.aspx">Change Password</a>
+                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="dropdown-btn" OnClick="btnLogout_Click">Logout</asp:LinkButton>
+                </div>
+            </div>
         </asp:Panel>
     </div>
 </header>
+<script type="text/javascript">
+    function toggleProfileMenu(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        var menu = event.currentTarget.closest('.profile-menu');
+        if (!menu) return;
+        var isOpen = menu.classList.contains('open');
+        document.querySelectorAll('.profile-menu').forEach(function (m) { m.classList.remove('open'); });
+        if (!isOpen) {
+            menu.classList.add('open');
+        }
+    }
+
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.profile-menu')) {
+            document.querySelectorAll('.profile-menu').forEach(function (m) { m.classList.remove('open'); });
+        }
+    });
+</script>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.UI.HtmlControls;
+using System;
 
 namespace G5_FINAL_PROJECT
 {
@@ -7,7 +6,6 @@ namespace G5_FINAL_PROJECT
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 CheckUserStatus();
@@ -18,31 +16,28 @@ namespace G5_FINAL_PROJECT
         {
             if (Session["UserID"] != null && Session["Role"] != null)
             {
-
                 pnlGuest.Visible = false;
                 pnlLoggedIn.Visible = true;
 
                 string role = Session["Role"].ToString();
-
                 string name = Session["FullName"] != null ? Session["FullName"].ToString() : "User";
+
+                lblDisplayName.Text = name.ToUpper();
 
                 if (role == "Admin")
                 {
-                    lblRoleBadge.Text = " " + name.ToUpper() + " (ADMIN)";
-                    lblRoleBadge.ForeColor = System.Drawing.Color.Goldenrod;
-
+                    lblRoleBadge.Text = "ADMIN";
+                    lblRoleBadge.Visible = true;
                     lnkDashboard.Visible = true;
                 }
                 else
                 {
-                    lblRoleBadge.Text = name.ToUpper();
-
+                    lblRoleBadge.Visible = false;
                     lnkDashboard.Visible = false;
                 }
             }
             else
             {
-
                 pnlGuest.Visible = true;
                 pnlLoggedIn.Visible = false;
             }
@@ -50,7 +45,6 @@ namespace G5_FINAL_PROJECT
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-
             Session.Clear();
             Session.Abandon();
 

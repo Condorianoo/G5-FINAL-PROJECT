@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Xml.Linq;
+using Microsoft.AspNet.Identity;
 
 namespace G5_FINAL_PROJECT
 {
@@ -24,10 +25,11 @@ namespace G5_FINAL_PROJECT
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-
+                    var passwordHasher = new PasswordHasher();
+                    string hashedPassword = passwordHasher.HashPassword(txtPassword.Text);
                     cmd.Parameters.AddWithValue("@Name", txtFullName.Text);
                     cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@Pass", txtPassword.Text);
+                    cmd.Parameters.AddWithValue("@Pass", hashedPassword);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
