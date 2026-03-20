@@ -6,6 +6,7 @@
 <html>
 <head runat="server">
     <title>Claim Item - Cabuyao Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         :root {

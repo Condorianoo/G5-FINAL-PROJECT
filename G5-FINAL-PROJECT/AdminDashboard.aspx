@@ -6,6 +6,7 @@
 <html>
 <head runat="server">
     <title>Admin Dashboard - Cabuyao Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         :root {
@@ -25,7 +26,8 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.4); box-sizing: border-box;
         }
 
-        .admin-table { width: 100%; border-collapse: collapse; margin-top: 25px; color: #333; }
+        .table-wrapper { width: 100%; overflow-x: auto; }
+        .admin-table { width: 100%; min-width: 720px; border-collapse: collapse; margin-top: 25px; color: #333; display: table; }
         .admin-table th { background-color: var(--cabuyao-green); color: white; padding: 18px 15px; text-align: left; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
         .admin-table td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; line-height: 1.4; }
         .admin-table tr:hover td { background-color: #fcfcfc; }
@@ -46,77 +48,83 @@
             <asp:Label ID="lblMessage" runat="server" CssClass="status-msg"></asp:Label>
 
             <h2 class="section-title">New Item Reports (Pending Approval)</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th style="width: 15%;">Type</th><th style="width: 25%;">Item Title</th><th style="width: 40%;">Description</th><th style="width: 20%;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:Repeater ID="rptPendingItems" runat="server" OnItemCommand="rptPendingItems_ItemCommand">
-                        <ItemTemplate>
-                            <tr>
-                                <td><span style="background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;"><%# Eval("Type") %></span></td>
-                                <td style="font-weight: 700; color: #006837;"><%# Eval("Title") %></td>
-                                <td style="color: #666;"><%# Eval("Description") %></td>
-                                <td>
-                                    <asp:Button ID="btnApprove" runat="server" Text="Approve" CssClass="btn-approve" CommandName="Approve" CommandArgument='<%# Eval("ItemID") %>' />
-                                    <asp:Button ID="btnReject" runat="server" Text="Delete" CssClass="btn-reject" CommandName="Reject" CommandArgument='<%# Eval("ItemID") %>' OnClientClick="return confirm('Delete this report?');" />
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">Type</th><th style="width: 25%;">Item Title</th><th style="width: 40%;">Description</th><th style="width: 20%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="rptPendingItems" runat="server" OnItemCommand="rptPendingItems_ItemCommand">
+                            <ItemTemplate>
+                                <tr>
+                                    <td><span style="background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;"><%# Eval("Type") %></span></td>
+                                    <td style="font-weight: 700; color: #006837;"><%# Eval("Title") %></td>
+                                    <td style="color: #666;"><%# Eval("Description") %></td>
+                                    <td>
+                                        <asp:Button ID="btnApprove" runat="server" Text="Approve" CssClass="btn-approve" CommandName="Approve" CommandArgument='<%# Eval("ItemID") %>' />
+                                        <asp:Button ID="btnReject" runat="server" Text="Delete" CssClass="btn-reject" CommandName="Reject" CommandArgument='<%# Eval("ItemID") %>' OnClientClick="return confirm('Delete this report?');" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
+            </div>
 
             <h2 class="section-title" style="color: #0056b3;">User Claim Requests</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th style="width: 15%;">Claimant</th><th style="width: 15%;">Item</th><th style="width: 40%;">Proof Provided</th><th style="width: 10%;">Date Sent</th><th style="width: 20%;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:Repeater ID="rptClaims" runat="server" OnItemCommand="rptClaims_ItemCommand">
-                        <ItemTemplate>
-                            <tr>
-                                <td style="font-weight: bold;"><%# Eval("ClaimerName") %></td>
-                                <td style="color: #006837;"><%# Eval("ItemName") %></td>
-                                <td style="font-size: 0.85rem; color: #444;"><%# Eval("ProofDetails") %></td>
-                                <td style="font-size: 0.8rem;"><%# Eval("ClaimDate", "{0:MMM dd, yyyy}") %></td>
-                                <td>
-                                    <asp:Button ID="btnApproveClaim" runat="server" Text="Approve" CssClass="btn-approve" CommandName="ApproveClaim" CommandArgument='<%# Eval("ClaimID") + "|" + Eval("ItemID") %>' />
-                                    <asp:Button ID="btnRejectClaim" runat="server" Text="Reject" CssClass="btn-reject" CommandName="RejectClaim" CommandArgument='<%# Eval("ClaimID") %>' />
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">Claimant</th><th style="width: 15%;">Item</th><th style="width: 40%;">Proof Provided</th><th style="width: 10%;">Date Sent</th><th style="width: 20%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="rptClaims" runat="server" OnItemCommand="rptClaims_ItemCommand">
+                            <ItemTemplate>
+                                <tr>
+                                    <td style="font-weight: bold;"><%# Eval("ClaimerName") %></td>
+                                    <td style="color: #006837;"><%# Eval("ItemName") %></td>
+                                    <td style="font-size: 0.85rem; color: #444;"><%# Eval("ProofDetails") %></td>
+                                    <td style="font-size: 0.8rem;"><%# Eval("ClaimDate", "{0:MMM dd, yyyy}") %></td>
+                                    <td>
+                                        <asp:Button ID="btnApproveClaim" runat="server" Text="Approve" CssClass="btn-approve" CommandName="ApproveClaim" CommandArgument='<%# Eval("ClaimID") + "|" + Eval("ItemID") %>' />
+                                        <asp:Button ID="btnRejectClaim" runat="server" Text="Reject" CssClass="btn-reject" CommandName="RejectClaim" CommandArgument='<%# Eval("ClaimID") %>' />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
+            </div>
 
             <h2 class="section-title" style="color: #6f42c1; border-bottom: 3px solid #e0cffc;">User Inquiries (Contact Form)</h2>
-            <table class="admin-table">
-                <thead>
-                    <tr>
-                        <th style="width: 20%;">Sender</th><th style="width: 20%;">Email</th><th style="width: 40%;">Message</th><th style="width: 20%;">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:Repeater ID="rptInquiries" runat="server" OnItemCommand="rptInquiries_ItemCommand">
-                        <ItemTemplate>
-                            <tr style='<%# Eval("Status").ToString() == "Unread" ? "background-color: #fff9db;" : "" %>'>
-                                <td><strong><%# Eval("UserName") %></strong><br /><small><%# Eval("DateSent", "{0:MMM dd, HH:mm}") %></small></td>
-                                <td><%# Eval("UserEmail") %></td>
-                                <td style="font-size: 0.9rem;"><%# Eval("MessageContent") %></td>
-                                <td>
-                                    <asp:Button ID="btnRead" runat="server" Text="Mark Read" CssClass="btn-approve" CommandName="MarkRead" CommandArgument='<%# Eval("InquiryID") %>' Visible='<%# Eval("Status").ToString() == "Unread" %>' />
-                                    <asp:Button ID="btnDeleteInquiry" runat="server" Text="Delete" CssClass="btn-reject" CommandName="DeleteInquiry" CommandArgument='<%# Eval("InquiryID") %>' OnClientClick="return confirm('Delete message?');" />
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Sender</th><th style="width: 20%;">Email</th><th style="width: 40%;">Message</th><th style="width: 20%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="rptInquiries" runat="server" OnItemCommand="rptInquiries_ItemCommand">
+                            <ItemTemplate>
+                                <tr style='<%# Eval("Status").ToString() == "Unread" ? "background-color: #fff9db;" : "" %>'>
+                                    <td><strong><%# Eval("UserName") %></strong><br /><small><%# Eval("DateSent", "{0:MMM dd, HH:mm}") %></small></td>
+                                    <td><%# Eval("UserEmail") %></td>
+                                    <td style="font-size: 0.9rem;"><%# Eval("MessageContent") %></td>
+                                    <td>
+                                        <asp:Button ID="btnRead" runat="server" Text="Mark Read" CssClass="btn-approve" CommandName="MarkRead" CommandArgument='<%# Eval("InquiryID") %>' Visible='<%# Eval("Status").ToString() == "Unread" %>' />
+                                        <asp:Button ID="btnDeleteInquiry" runat="server" Text="Delete" CssClass="btn-reject" CommandName="DeleteInquiry" CommandArgument='<%# Eval("InquiryID") %>' OnClientClick="return confirm('Delete message?');" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>

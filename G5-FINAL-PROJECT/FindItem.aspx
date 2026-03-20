@@ -33,6 +33,22 @@
             align-items: flex-start;
         }
 
+        .filter-toggle {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            background: var(--cabuyao-yellow);
+            color: #111;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 18px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+            text-transform: uppercase;
+        }
+
         .sidebar {
             width: 280px;
             flex-shrink: 0;
@@ -114,7 +130,12 @@
                 padding: 0 20px 80px 20px;
             }
 
+            .filter-toggle {
+                display: inline-flex;
+            }
+
             .sidebar {
+                display: none;
                 width: 100%;
                 position: relative;
                 top: 0;
@@ -125,6 +146,10 @@
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: 15px;
+            }
+
+            .sidebar.open {
+                display: block;
             }
         }
 
@@ -170,6 +195,7 @@
             <uc:SiteHeader runat="server" ID="SiteHeader" />
             <div class="page-content">
                 <div class="main-wrapper">
+                    <button type="button" class="filter-toggle" onclick="toggleFilters()">Filters</button>
                     <aside class="sidebar">
                         <h2>Filters</h2>
                         <div class="filter-container">
@@ -223,5 +249,22 @@
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
+    <script type="text/javascript">
+        function toggleFilters() {
+            var sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
+            sidebar.classList.toggle('open');
+        }
+        document.addEventListener('click', function (e) {
+            var sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
+            if (window.innerWidth > 1024) return;
+            var toggle = e.target.closest('.filter-toggle');
+            if (toggle) return;
+            if (!e.target.closest('.sidebar')) {
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
 </body>
 </html>

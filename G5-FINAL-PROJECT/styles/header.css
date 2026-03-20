@@ -43,7 +43,7 @@ body > form > .page-shell {
     flex: 1 1 auto;
     width: 100%;
     max-width: 1200px;
-    padding: 24px 5vw;
+    padding: clamp(16px, 5vw, 40px);
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -87,17 +87,21 @@ body > form > footer {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 22px);
+    flex-wrap: nowrap;
     width: 100%;
     justify-content: space-between;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
+
+.nav-links::-webkit-scrollbar { display: none; }
 
 .nav-left-links {
     display: flex;
     align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 22px);
+    flex-wrap: nowrap;
 }
 
 .nav-auth {
@@ -111,7 +115,7 @@ body > form > footer {
     text-decoration: none;
     color: var(--cabuyao-green);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 1.5vw, 0.95rem);
     text-transform: uppercase;
     padding-bottom: 5px;
     transition: 0.3s;
@@ -234,6 +238,8 @@ body > form > footer {
         width: 100%;
         justify-content: flex-start;
         gap: 14px;
+        flex-wrap: wrap;
+        overflow: visible;
     }
     .nav-link,
     .login-btn {
