@@ -1,12 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SiteHeader.ascx.cs" Inherits="G5_FINAL_PROJECT.SiteHeader" %>
 
 <header class="mcl-nav">
-    <div class="logo-container">
+    <a href="Landing.aspx" class="logo-container" style="text-decoration: none;">
         <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" class="cabuyao-logo" />
         <h2 style="color: var(--cabuyao-green); margin:0; letter-spacing:0.5px; font-weight: 900;">
-            CABUYAO <span style="color: #8a7300;">LOST &amp; FOUND</span>
+            CABUYAO<br />
+            <span style="color: #8a7300;">LOST &amp; FOUND</span>
         </h2>
-    </div>
+    </a>
     
     <div class="nav-links">
         <div class="nav-left-links">

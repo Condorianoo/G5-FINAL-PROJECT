@@ -77,6 +77,16 @@ body > form > footer {
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-right: 28px; /* push nav buttons slightly right to clear stacked logo */
+}
+
+/* Keep "LOST & FOUND" together on one line beneath CABUYAO */
+.logo-container h2 {
+    line-height: 1.05;
+}
+.logo-container h2 span {
+    display: block;
+    white-space: nowrap;
 }
 
 
@@ -92,9 +102,12 @@ body > form > footer {
     gap: clamp(10px, 2vw, 22px);
     /* Allow links to wrap instead of forcing a scroll container that hides dropdowns */
     flex-wrap: wrap;
-    width: 100%;
+    flex: 1 1 auto;      /* shrink within header without creating a hitbox */
+    min-width: 0;
+    width: auto;
     justify-content: space-between;
     overflow: visible;
+    padding-left: 24px; /* modest nudge right without overflow */
 }
 
 .nav-links::-webkit-scrollbar { display: none; }
@@ -112,6 +125,7 @@ body > form > footer {
     gap: 15px;
     margin-left: auto;
     overflow: visible;
+    margin-right: -40px; /* pull dashboard/profile further right */
 }
 
 .nav-link {
@@ -237,6 +251,7 @@ body > form > footer {
     .logo-container {
         width: 100%;
         justify-content: space-between;
+        margin-right: 0;
     }
     .nav-links {
         width: 100%;
@@ -244,10 +259,16 @@ body > form > footer {
         gap: 14px;
         flex-wrap: wrap;
         overflow: visible;
+        padding-left: 0; /* reset desktop shift */
     }
     .nav-link,
     .login-btn {
         font-size: 0.9rem;
+    }
+    .nav-auth {
+        margin-left: auto;
+        margin-right: 0; /* reset desktop negative margin */
+        padding-right: 0;
     }
     .page-content {
         padding: 18px 4vw;
@@ -262,6 +283,7 @@ body > form > footer {
     }
     .logo-container {
         gap: 10px;
+        margin-right: 0;
     }
     .cabuyao-logo {
         height: 42px;
@@ -269,6 +291,7 @@ body > form > footer {
     .nav-links {
         flex-direction: column;
         align-items: stretch;
+        padding-left: 0;
     }
     .nav-link {
         padding: 8px 0;
@@ -277,6 +300,13 @@ body > form > footer {
     .login-btn {
         width: 100%;
         text-align: center;
+    }
+    .nav-auth {
+        margin-left: 0;
+        margin-right: 0;
+        padding-right: 0;
+        width: 100%;
+        justify-content: flex-start;
     }
     .page-content {
         padding: 16px 14px;
