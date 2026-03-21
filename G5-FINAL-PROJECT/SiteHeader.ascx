@@ -3,9 +3,10 @@
 <header class="mcl-nav">
     <div class="logo-container">
         <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" class="cabuyao-logo" />
-        <h2 style="color: var(--cabuyao-green); margin:0; letter-spacing:1px; font-weight: 900;">
-            CABUYAO <span style="color: #8a7300;">LOST AND FOUND</span>
-        </h2>
+        <div class="logo-text">
+            <span class="logo-line1">CABUYAO</span>
+            <span class="logo-line2">LOST &amp; FOUND</span>
+        </div>
     </div>
     
     <div class="nav-links">
@@ -44,16 +45,54 @@
         event.stopPropagation();
         var menu = event.currentTarget.closest('.profile-menu');
         if (!menu) return;
+        var dropdown = menu.querySelector('.profile-dropdown');
+        var trigger = event.currentTarget;
         var isOpen = menu.classList.contains('open');
-        document.querySelectorAll('.profile-menu').forEach(function (m) { m.classList.remove('open'); });
-        if (!isOpen) {
+
+        // Close any other open menus
+        document.querySelectorAll('.profile-menu').forEach(function (m) {
+            m.classList.remove('open');
+            var dd = m.querySelector('.profile-dropdown');
+            if (dd) {
+                dd.style.display = 'none';
+                dd.style.visibility = 'hidden';
+            }
+        });
+
+        if (!isOpen && dropdown && trigger) {
             menu.classList.add('open');
+            // Place dropdown using viewport coords to bypass parent overflow contexts
+            var rect = trigger.getBoundingClientRect();
+            dropdown.style.position = 'fixed';
+            dropdown.style.top = (rect.bottom + 8) + 'px';
+
+            // Align left edge with trigger, match trigger width, keep within viewport
+            var desiredLeft = rect.left;
+            var dropdownWidth = rect.width; // copy trigger width
+            var maxLeft = Math.max(0, window.innerWidth - dropdownWidth - 8);
+            dropdown.style.left = Math.min(desiredLeft, maxLeft) + 'px';
+            dropdown.style.right = 'auto';
+            dropdown.style.width = dropdownWidth + 'px';
+            dropdown.style.minWidth = dropdownWidth + 'px';
+            dropdown.style.display = 'flex';
+            dropdown.style.visibility = 'visible';
+        } else if (dropdown) {
+            dropdown.style.display = 'none';
+            dropdown.style.visibility = 'hidden';
+            menu.classList.remove('open');
         }
     }
 
     document.addEventListener('click', function (e) {
         if (!e.target.closest('.profile-menu')) {
-            document.querySelectorAll('.profile-menu').forEach(function (m) { m.classList.remove('open'); });
+            document.querySelectorAll('.profile-menu').forEach(function (m) { 
+                m.classList.remove('open'); 
+                var dd = m.querySelector('.profile-dropdown');
+                if (dd) {
+                    dd.style.display = 'none';
+                    dd.style.visibility = 'hidden';
+                }
+            });
         }
     });
 </script>

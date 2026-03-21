@@ -70,12 +70,32 @@ body > form > footer {
     width: 100%;
     box-sizing: border-box;
     gap: 12px;
+    overflow: visible;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+    letter-spacing: 1px;
+}
+
+.logo-line1 {
+    color: var(--cabuyao-green);
+    font-weight: 900;
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+}
+
+.logo-line2 {
+    color: #8a7300;
+    font-weight: 900;
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
 }
 
 .cabuyao-logo {
@@ -88,11 +108,11 @@ body > form > footer {
     display: flex;
     align-items: center;
     gap: clamp(10px, 2vw, 22px);
-    flex-wrap: nowrap;
+    /* Allow links to wrap instead of forcing a scroll container that hides dropdowns */
+    flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
-    overflow-x: auto;
-    scrollbar-width: none;
+    overflow: visible;
 }
 
 .nav-links::-webkit-scrollbar { display: none; }
@@ -109,6 +129,7 @@ body > form > footer {
     align-items: center;
     gap: 15px;
     margin-left: auto;
+    overflow: visible;
 }
 
 .nav-link {
@@ -147,6 +168,7 @@ body > form > footer {
 
 .profile-menu {
     position: relative;
+    overflow: visible;
 }
 
 .profile-button {
@@ -198,7 +220,7 @@ body > form > footer {
     display: none;
     flex-direction: column;
     overflow: hidden;
-    z-index: 1500;
+    z-index: 5000;
 }
 
 .profile-menu.open .profile-dropdown {
