@@ -36,3 +36,5 @@ admin@gmail.com, admin
 dwightreyes0154@gmail.com, password  
 ricacaballero@gmail.com, 123456  
 ```
+
+AdminLogin, AdminPassword0
