@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -44,7 +44,8 @@ namespace G5_FINAL_PROJECT
                         lblItemDesc.Text = reader["Description"].ToString();
 
                         string imgPath = reader["ImagePath"].ToString();
-                        imgItem.ImageUrl = !string.IsNullOrEmpty(imgPath) ? "~/" + imgPath : "~/images/no-image.png";
+                        var resolved = BlobStorageHelper.GetPublicUrl(imgPath);
+                        imgItem.ImageUrl = !string.IsNullOrEmpty(resolved) ? resolved : "~/images/no-image.png";
                     }
                     else
                     {

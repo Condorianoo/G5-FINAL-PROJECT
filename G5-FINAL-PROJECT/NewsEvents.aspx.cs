@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -39,6 +39,14 @@ namespace G5_FINAL_PROJECT
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
 
+                    // Transform stored blob names to SAS URLs for display
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var path = row["ImagePath"] as string;
+                        var resolved = BlobStorageHelper.GetPublicUrl(path);
+                        row["ImagePath"] = resolved ?? "";
+                    }
+
                     NewsRepeater.DataSource = dt;
                     NewsRepeater.DataBind();
                 }
@@ -58,16 +66,13 @@ namespace G5_FINAL_PROJECT
             {
                 try
                 {
-                    string fileName = Path.GetFileName(fuNewsImage.FileName);
-                    string uniqueName = Guid.NewGuid().ToString() + "_" + fileName;
-                    string folderPath = Server.MapPath("~/images/News/");
-
-                    if (!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
-
-                    fuNewsImage.SaveAs(Path.Combine(folderPath, uniqueName));
-                    imagePath = "images/News/" + uniqueName;
+                    imagePath = BlobStorageHelper.Upload(fuNewsImage.FileContent, fuNewsImage.PostedFile.ContentType, "news", fuNewsImage.FileName);
                 }
-                catch {  }
+                catch (Exception ex)
+                {
+                    ClientScript.RegisterStartupScript(GetType(), "uploadError", $"alert('Image upload failed: {ex.Message}');", true);
+                    return;
+                }
             }
 
             string connStr = ConfigurationManager.ConnectionStrings["CabuyaoDB"].ConnectionString;
@@ -79,7 +84,7 @@ namespace G5_FINAL_PROJECT
                     cmd.Parameters.AddWithValue("@Title", txtNewsTitle.Text.Trim());
                     cmd.Parameters.AddWithValue("@Content", txtNewsContent.Text.Trim());
                     cmd.Parameters.AddWithValue("@AuthorID", Session["UserID"]);
-                    cmd.Parameters.AddWithValue("@Img", (object)imagePath ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Img", string.IsNullOrEmpty(imagePath) ? (object)DBNull.Value : imagePath);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();

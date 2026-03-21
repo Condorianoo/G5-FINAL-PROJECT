@@ -1,0 +1,5 @@
+<connectionStrings>
+  <add name="CabuyaoDB"
+       connectionString="Data Source=YOUR_SERVER.database.windows.net;Initial Catalog=YOUR_DATABASE;User ID=YOUR_USER;Password=YOUR_PASSWORD;Encrypt=True;TrustServerCertificate=False;MultipleActiveResultSets=False;Connect Timeout=60;"
+       providerName="System.Data.SqlClient" />
+</connectionStrings>

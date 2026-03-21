@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.IO; // Added for Path and Directory
+using System.IO;
 using System.Web.UI;
 
 namespace G5_FINAL_PROJECT
@@ -25,17 +25,7 @@ namespace G5_FINAL_PROJECT
             {
                 try
                 {
-
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(fuMedia.FileName);
-                    string folderPath = Server.MapPath("~/uploads/");
-
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-
-                    fuMedia.SaveAs(Path.Combine(folderPath, fileName));
-                    savedPath = "uploads/" + fileName; // Path to store in DB
+                    savedPath = BlobStorageHelper.Upload(fuMedia.FileContent, fuMedia.PostedFile.ContentType, "items", fuMedia.FileName);
                 }
                 catch (Exception ex)
                 {
