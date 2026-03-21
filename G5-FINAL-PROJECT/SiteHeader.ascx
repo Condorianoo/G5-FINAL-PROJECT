@@ -3,10 +3,9 @@
 <header class="mcl-nav">
     <div class="logo-container">
         <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" class="cabuyao-logo" />
-        <div class="logo-text">
-            <span class="logo-line1">CABUYAO</span>
-            <span class="logo-line2">LOST &amp; FOUND</span>
-        </div>
+        <h2 style="color: var(--cabuyao-green); margin:0; letter-spacing:0.5px; font-weight: 900;">
+            CABUYAO <span style="color: #8a7300;">LOST &amp; FOUND</span>
+        </h2>
     </div>
     
     <div class="nav-links">
