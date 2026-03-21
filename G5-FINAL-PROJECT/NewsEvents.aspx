@@ -105,7 +105,7 @@
                     <asp:Repeater ID="NewsRepeater" runat="server">
                         <ItemTemplate>
                             <article class="news-card">
-                                <img src='<%# string.IsNullOrEmpty(Eval("ImagePath").ToString()) ? "images/Cabuyao_Portal.jpg" : ResolveUrl("~/" + Eval("ImagePath")) %>' alt="News Image" class="news-image" />
+                                <img src='<%# string.IsNullOrEmpty(Eval("ImagePath")?.ToString()) ? "images/Cabuyao_Portal.jpg" : Eval("ImagePath") %>' alt="News Image" class="news-image" />
                                 <div class="news-content">
                                     <span class="news-date"><%# Eval("PublishDate", "{0:MMMM dd, yyyy}") %></span>
                                     <h3 class="news-title"><%# Eval("Title") %></h3>
