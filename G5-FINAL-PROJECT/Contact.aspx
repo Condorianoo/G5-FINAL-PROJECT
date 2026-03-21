@@ -149,9 +149,7 @@
                 </div>
 
                 <div class="map-wrapper">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3865.5583562473853!2d121.12328247583685!3d14.279010484860012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d091397880d7%3A0x6b801087e5b263e7!2sCity%20Government%20of%20Cabuyao!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph" 
-                        loading="lazy">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d148735.62276767116!2d121.0942685!3d14.227040449999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d8847ffc5237%3A0xeefaf6451f579b65!2sCabuyao%20City%2C%20Laguna!5e1!3m2!1sen!2sph!4v1774097655186!5m2!1sen!2sphi768!4f13.1!3m3!1m2!1s0x3397d123456789%3A0xabcdef123456789!2sCabuyao%20City%20Hall!5e0!3m2!1sen!2sph!4v1712345678901" allowfullscreen="" loading="lazy">
                     </iframe>
                 </div>
             </div>
