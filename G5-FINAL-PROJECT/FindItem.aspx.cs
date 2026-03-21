@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -60,6 +60,13 @@ namespace G5_FINAL_PROJECT
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var path = row["ImagePath"] as string;
+                        var resolved = BlobStorageHelper.GetPublicUrl(path);
+                        row["ImagePath"] = resolved ?? "";
+                    }
 
                     rptItems.DataSource = dt;
                     rptItems.DataBind();

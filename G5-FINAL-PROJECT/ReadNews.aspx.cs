@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -42,7 +42,8 @@ namespace G5_FINAL_PROJECT
                             litContent.Text = reader["Content"].ToString();
 
                             string imgPath = reader["ImagePath"].ToString();
-                            imgFullNews.ImageUrl = !string.IsNullOrEmpty(imgPath) ? "~/" + imgPath : "~/images/Cabuyao_Portal.jpg";
+                            var resolved = BlobStorageHelper.GetPublicUrl(imgPath);
+                            imgFullNews.ImageUrl = !string.IsNullOrEmpty(resolved) ? resolved : "~/images/Cabuyao_Portal.jpg";
                         }
                         else
                         {

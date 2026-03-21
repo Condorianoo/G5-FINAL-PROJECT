@@ -54,7 +54,7 @@ namespace G5_FINAL_PROJECT
                 txtEmail.Text = "";
                 txtMessage.Text = "";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 lblSuccess.Text = "Sorry, there was an error sending your message. Please try again later.";
                 lblSuccess.Visible = true;
