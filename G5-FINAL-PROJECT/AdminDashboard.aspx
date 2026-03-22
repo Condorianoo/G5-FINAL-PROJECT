@@ -29,9 +29,9 @@
         }
 
         .table-wrapper { width: 100%; overflow-x: auto; }
-        .admin-table { width: 100%; min-width: 900px; border-collapse: collapse; margin-top: 25px; color: #333; display: table; }
+        .admin-table { width: 100%; min-width: 900px; border-collapse: collapse; margin-top: 25px; color: #333; display: table; table-layout: fixed; }
         .admin-table th { background-color: var(--cabuyao-green); color: white; padding: 18px 15px; text-align: left; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-        .admin-table td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; line-height: 1.4; }
+        .admin-table td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; line-height: 1.4; word-break: break-word; vertical-align: middle; }
         .admin-table tr:hover td { background-color: #fcfcfc; }
         .item-preview-cell { width: 120px; }
         .item-preview-img {
@@ -64,7 +64,7 @@
             display: grid;
             grid-template-columns: 88px 1fr;
             gap: 14px;
-            align-items: start;
+            align-items: center;
         }
         .proofs-text {
             font-size: 0.85rem;
@@ -76,6 +76,9 @@
 
         .btn-approve { background-color: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .btn-reject { background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .actions-cell { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; min-height: 44px; }
+        .actions-cell .btn-approve, .actions-cell .btn-reject { min-width: 110px; text-align: center; }
+        .actions-header { text-align: center; }
         .status-msg { display: block; margin-bottom: 20px; padding: 10px; border-radius: 5px; font-weight: bold; text-align: center; }
 
         .section-title { color: var(--cabuyao-green); border-bottom: 3px solid var(--cabuyao-yellow); padding-bottom: 15px; margin-top: 40px; font-weight: 800; }
@@ -94,7 +97,7 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th style="width: 12%;">Type</th><th style="width: 23%;">Item Title</th><th style="width: 15%;">Image</th><th style="width: 30%;">Description</th><th style="width: 20%;">Actions</th>
+                            <th style="width: 12%;">Type</th><th style="width: 23%;">Item Title</th><th style="width: 15%;">Image</th><th style="width: 30%;">Description</th><th class="actions-header" style="width: 20%;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,7 +112,7 @@
                                             : "<img src='" + Eval("ImagePath") + "' alt='Item image' class='item-preview-img zoomable-image' data-viewer='true' />" %>
                                     </td>
                                     <td style="color: #666;"><%# Eval("Description") %></td>
-                                    <td>
+                                    <td class="actions-cell">
                                         <asp:Button ID="btnApprove" runat="server" Text="Approve" CssClass="btn-approve" CommandName="Approve" CommandArgument='<%# Eval("ItemID") %>' />
                                         <asp:Button ID="btnReject" runat="server" Text="Delete" CssClass="btn-reject" CommandName="Reject" CommandArgument='<%# Eval("ItemID") %>' OnClientClick="return confirm('Delete this report?');" />
                                     </td>
@@ -125,7 +128,7 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th style="width: 15%;">Claimant</th><th style="width: 15%;">Item</th><th style="width: 40%;">Proofs Provided</th><th style="width: 10%;">Date Sent</th><th style="width: 20%;">Actions</th>
+                            <th style="width: 15%;">Claimant</th><th style="width: 15%;">Item</th><th style="width: 40%;">Proofs Provided</th><th style="width: 10%;">Date Sent</th><th class="actions-header" style="width: 20%;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,7 +146,7 @@
                                         </div>
                                     </td>
                                     <td style="font-size: 0.8rem;"><%# Eval("ClaimDate", "{0:MMM dd, yyyy}") %></td>
-                                    <td>
+                                    <td class="actions-cell">
                                         <asp:Button ID="btnApproveClaim" runat="server" Text="Approve" CssClass="btn-approve" CommandName="ApproveClaim" CommandArgument='<%# Eval("ClaimID") + "|" + Eval("ItemID") %>' />
                                         <asp:Button ID="btnRejectClaim" runat="server" Text="Reject" CssClass="btn-reject" CommandName="RejectClaim" CommandArgument='<%# Eval("ClaimID") %>' />
                                     </td>
@@ -159,7 +162,7 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th style="width: 20%;">Sender</th><th style="width: 20%;">Email</th><th style="width: 40%;">Message</th><th style="width: 20%;">Actions</th>
+                            <th style="width: 20%;">Sender</th><th style="width: 20%;">Email</th><th style="width: 40%;">Message</th><th class="actions-header" style="width: 20%;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -169,7 +172,7 @@
                                     <td><strong><%# Eval("UserName") %></strong><br /><small><%# Eval("DateSent", "{0:MMM dd, HH:mm}") %></small></td>
                                     <td><%# Eval("UserEmail") %></td>
                                     <td style="font-size: 0.9rem;"><%# Eval("MessageContent") %></td>
-                                    <td>
+                                    <td class="actions-cell">
                                         <asp:Button ID="btnRead" runat="server" Text="Mark Read" CssClass="btn-approve" CommandName="MarkRead" CommandArgument='<%# Eval("InquiryID") %>' Visible='<%# Eval("Status").ToString() == "Unread" %>' />
                                         <asp:Button ID="btnDeleteInquiry" runat="server" Text="Delete" CssClass="btn-reject" CommandName="DeleteInquiry" CommandArgument='<%# Eval("InquiryID") %>' OnClientClick="return confirm('Delete message?');" />
                                     </td>

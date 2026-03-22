@@ -1,4 +1,4 @@
-ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="G5_FINAL_PROJECT.Login" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="G5_FINAL_PROJECT.Login" %>
 <%@ Register TagPrefix="uc" TagName="Header" Src="~/SiteHeader.ascx" %>
 <%@ Register TagPrefix="uc" TagName="Footer" Src="~/SiteFooter.ascx" %>
 
@@ -29,7 +29,28 @@
             margin-bottom: 22px;
             text-align: left;
         }
+
+        .show-pwd-container {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
     </style>
+    <script type="text/javascript">
+        function togglePassword() {
+            var pwdBox = document.getElementById('<%= txtPassword.ClientID %>');
+            var chk = document.getElementById('chkShow');
+            if (chk.checked) {
+                pwdBox.type = "text";
+            } else {
+                pwdBox.type = "password";
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -44,12 +65,10 @@
                             <label>Email Address</label>
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="login-input" placeholder="name@email.com"></asp:TextBox>
                             
-                            <!-- Makes sure there's an input -->
                             <asp:RequiredFieldValidator ID="rfvEmail" runat="server" 
                                 ControlToValidate="txtEmail" ErrorMessage="* Required" 
                                 ForeColor="Red" Display="Dynamic" />
 
-                            <!-- Checks if email in correct format -->
                             <asp:RegularExpressionValidator ID="revEmail" runat="server" 
                                 ControlToValidate="txtEmail" 
                                 ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" 
@@ -58,14 +77,17 @@
 
                         <div class="input-group">
                             <label>Password</label>
-                            <asp:TextBox ID="txtPassword" runat="server" CssClass="login-input" TextMode="Password" placeholder=""></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="login-input" TextMode="Password" placeholder="••••••••"></asp:TextBox>
+                            
+                            <label class="show-pwd-container">
+                                <input type="checkbox" id="chkShow" onclick="togglePassword()" /> Show Password
+                            </label>
 
-                            <!-- Makes sure there's an input -->
                             <asp:RequiredFieldValidator ID="rfvPassword" runat="server" 
                                 ControlToValidate="txtPassword" ErrorMessage="* Required" 
                                 ForeColor="Red" Display="Dynamic" />
                                 
-                            <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="lblError" runat="server" ForeColor="Red" Display="Dynamic"></asp:Label>
                         </div>
 
                         <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-login" OnClick="btnLogin_Click" />
@@ -81,4 +103,3 @@
     </form>
 </body>
 </html>
-
