@@ -27,7 +27,7 @@
     .footer-col ul { list-style: none; padding: 0; margin: 0; }
     .footer-col ul li { margin-bottom: 12px; }
     .footer-col ul li a { color: #4f4f4f; text-decoration: none; transition: 0.3s; }
-    .footer-col ul li a:hover { color: #8a7300; }
+    .footer-col ul li a:hover { color: var(--cabuyao-yellow); }
 
     .footer-brand h2 { color: #006837; margin: 0; font-weight: 900; letter-spacing: 1px; }
     .footer-brand p { margin-top: 10px; font-size: 0.8rem; color: #4f4f4f; }

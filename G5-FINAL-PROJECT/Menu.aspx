@@ -99,7 +99,7 @@
         }
 
         .glass-card p { 
-            color: #8A7300; 
+            color: var(--cabuyao-yellow); 
             line-height: 1.4; 
             font-size: 0.95rem;
             font-weight: 600;

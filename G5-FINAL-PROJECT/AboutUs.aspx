@@ -18,7 +18,7 @@
 
         :root {
             --cabuyao-green: #006837;
-            --cabuyao-yellow: #FFC000; 
+            --cabuyao-yellow: #FFD700; 
             --dark-overlay: rgba(0, 104, 55, 0.78); 
         }
 
@@ -141,7 +141,7 @@
         }
 
         .dev-role {
-            color: #8a7300; 
+            color: var(--cabuyao-yellow); 
             font-size: 0.85rem; 
             font-weight: bold; 
             text-transform: uppercase; 

@@ -5,7 +5,7 @@
         <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" class="cabuyao-logo" />
         <h2 style="color: var(--cabuyao-green); margin:0; letter-spacing:0.5px; font-weight: 900;">
             CABUYAO<br />
-            <span style="color: #8a7300;">LOST &amp; FOUND</span>
+            <span style="color: #FFD700;">LOST &amp; FOUND</span>
         </h2>
     </a>
     
@@ -28,7 +28,7 @@
             <div class="profile-menu" id="profileMenu">
                 <a href="#" class="profile-button" onclick="toggleProfileMenu(event);">
                     <span class="profile-name"><asp:Label ID="lblDisplayName" runat="server" /></span>
-                    <asp:Label ID="lblRoleBadge" runat="server" CssClass="profile-role" Visible="false"></asp:Label>
+                    <asp:Label ID="lblRoleBadge" runat="server" CssClass="profile-role" Visible="false" style="background:#FFD700; color:#111;"></asp:Label>
                     <span class="profile-caret">▼</span>
                 </a>
                 <div class="profile-dropdown" id="profileDropdown">

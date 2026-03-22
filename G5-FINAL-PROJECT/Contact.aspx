@@ -12,7 +12,7 @@
     <style>
         :root {
             --cabuyao-green: #006837;
-            --cabuyao-yellow: #d4a000;
+            --cabuyao-yellow: #FFD700;
             --text-dark: #333333;
             --text-light: #666666;
             --bg-light: #f9f9f9;

@@ -70,7 +70,7 @@
         .news-image { width: 100%; height: 180px; object-fit: cover; background: #eee; }
 
         .news-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-        .news-date { color: #d4a000; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; }
+        .news-date { color: var(--cabuyao-yellow); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 8px; }
         .news-title { color: var(--cabuyao-green); font-size: 1.25rem; font-weight: 800; margin: 0 0 10px 0; line-height: 1.2; }
         .news-excerpt { color: var(--text-light); font-size: 0.95rem; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
         .read-more { color: var(--cabuyao-green); text-decoration: none; font-weight: bold; font-size: 0.95rem; }
