@@ -8,6 +8,15 @@ namespace G5_FINAL_PROJECT
 {
     public partial class AdminDashboard : System.Web.UI.Page
     {
+        private static bool HasProofImageColumn(SqlConnection conn)
+        {
+            const string query = "SELECT COUNT(1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Claims' AND COLUMN_NAME = 'ProofImagePath'";
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserID"] == null || Session["Role"] == null || Session["Role"].ToString() != "Admin")
@@ -33,11 +42,22 @@ namespace G5_FINAL_PROJECT
             string connStr = ConfigurationManager.ConnectionStrings["CabuyaoDB"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                string query = "SELECT ItemID, Title, Description, Type FROM Items WHERE Status = 'Pending' ORDER BY ItemID DESC";
+                string query = "SELECT ItemID, Title, Description, Type, ImagePath FROM Items WHERE Status = 'Pending' ORDER BY ItemID DESC";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     conn.Open();
-                    rptPendingItems.DataSource = cmd.ExecuteReader();
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var path = row["ImagePath"] as string;
+                        var resolved = BlobStorageHelper.GetPublicUrl(path);
+                        row["ImagePath"] = resolved ?? string.Empty;
+                    }
+
+                    rptPendingItems.DataSource = dt;
                     rptPendingItems.DataBind();
                 }
             }
@@ -48,16 +68,31 @@ namespace G5_FINAL_PROJECT
             string connStr = ConfigurationManager.ConnectionStrings["CabuyaoDB"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-                string query = @"SELECT C.ClaimID, C.ItemID, I.Title AS ItemName, U.FullName AS ClaimerName, 
-                                 C.ProofDetails, C.ClaimDate FROM Claims C 
-                                 JOIN Items I ON C.ItemID = I.ItemID 
+                conn.Open();
+                bool hasProofImageColumn = HasProofImageColumn(conn);
+                string query = hasProofImageColumn
+                    ? @"SELECT C.ClaimID, C.ItemID, I.Title AS ItemName, U.FullName AS ClaimerName,
+                                 C.ProofDetails, C.ProofImagePath, C.ClaimDate FROM Claims C
+                                 JOIN Items I ON C.ItemID = I.ItemID
+                                 JOIN Users U ON C.ClaimantID = U.UserID ORDER BY C.ClaimDate DESC"
+                    : @"SELECT C.ClaimID, C.ItemID, I.Title AS ItemName, U.FullName AS ClaimerName,
+                                 C.ProofDetails, CAST(NULL AS NVARCHAR(500)) AS ProofImagePath, C.ClaimDate FROM Claims C
+                                 JOIN Items I ON C.ItemID = I.ItemID
                                  JOIN Users U ON C.ClaimantID = U.UserID ORDER BY C.ClaimDate DESC";
+
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    conn.Open();
                     SqlDataAdapter sda = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var path = row["ProofImagePath"] as string;
+                        var resolved = BlobStorageHelper.GetPublicUrl(path);
+                        row["ProofImagePath"] = resolved ?? string.Empty;
+                    }
+
                     rptClaims.DataSource = dt;
                     rptClaims.DataBind();
                 }

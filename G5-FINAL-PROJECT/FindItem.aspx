@@ -7,7 +7,9 @@
 <head runat="server">
     <title>Find Item - Cabuyao Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="styles/image-viewer.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -232,7 +234,7 @@
                                         <div class="item-image">
                                             <%# string.IsNullOrEmpty(Eval("ImagePath")?.ToString()) ? 
                                                 Eval("Type") + " ITEM" : 
-                                                "<img src='" + Eval("ImagePath") + "' alt='Item Image' />" %>
+                                                "<img src='" + Eval("ImagePath") + "' alt='Item Image' data-viewer='true' />" %>
                                         </div>
                                         <div class="item-info">
                                             <p class="item-title"><%# Eval("Title") %></p>
@@ -266,5 +268,6 @@
             }
         });
     </script>
+    <script src="scripts/image-viewer.js"></script>
 </body>
 </html>

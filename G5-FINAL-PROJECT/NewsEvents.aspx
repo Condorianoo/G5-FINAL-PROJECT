@@ -7,7 +7,9 @@
 <head runat="server">
     <title>News &amp; Events - Cabuyao Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="styles/image-viewer.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -105,7 +107,7 @@
                     <asp:Repeater ID="NewsRepeater" runat="server">
                         <ItemTemplate>
                             <article class="news-card">
-                                <img src='<%# string.IsNullOrEmpty(Eval("ImagePath")?.ToString()) ? "images/Cabuyao_Portal.jpg" : Eval("ImagePath") %>' alt="News Image" class="news-image" />
+                                <img src='<%# string.IsNullOrEmpty(Eval("ImagePath")?.ToString()) ? "images/Cabuyao_Portal.jpg" : Eval("ImagePath") %>' alt="News Image" class="news-image zoomable-image" data-viewer="true" />
                                 <div class="news-content">
                                     <span class="news-date"><%# Eval("PublishDate", "{0:MMMM dd, yyyy}") %></span>
                                     <h3 class="news-title"><%# Eval("Title") %></h3>
@@ -147,6 +149,7 @@
             function openModal() { document.getElementById('newsModal').style.display = 'flex'; }
             function closeModal() { document.getElementById('newsModal').style.display = 'none'; }
         </script>
+        <script src="scripts/image-viewer.js"></script>
     </form>
 </body>
 </html>

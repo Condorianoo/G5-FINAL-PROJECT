@@ -1,61 +1,3 @@
-﻿:root {
-    --cabuyao-green: #006837;
-    --cabuyao-yellow: #FFD700;
-}
-
-html {
-    overflow-y: scroll; 
-    overflow-x: hidden;
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-}
-
-
-body > form {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: stretch;
-}
-
-body > form > .page-shell {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto;
-    min-height: 100%;
-    width: 100%;
-    align-items: center;
-}
-
-.page-shell > .mcl-nav {
-    align-self: stretch;
-    width: 100%;
-}
-
-.page-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: 1200px;
-    padding: clamp(16px, 5vw, 40px);
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-body > form > footer {
-    width: 100%;
-    margin-top: 0;
-    align-self: stretch;
-    flex-shrink: 0;
-}
-
-
 .mcl-nav {
     background: white;
     display: flex;
@@ -77,18 +19,17 @@ body > form > footer {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-right: 28px; /* push nav buttons slightly right to clear stacked logo */
+    margin-right: 28px;
 }
 
-/* Keep "LOST & FOUND" together on one line beneath CABUYAO */
 .logo-container h2 {
     line-height: 1.05;
 }
+
 .logo-container h2 span {
     display: block;
     white-space: nowrap;
 }
-
 
 .cabuyao-logo {
     height: 50px;
@@ -100,17 +41,18 @@ body > form > footer {
     display: flex;
     align-items: center;
     gap: clamp(10px, 2vw, 22px);
-    /* Allow links to wrap instead of forcing a scroll container that hides dropdowns */
     flex-wrap: wrap;
-    flex: 1 1 auto;      /* shrink within header without creating a hitbox */
+    flex: 1 1 auto;
     min-width: 0;
     width: auto;
     justify-content: space-between;
     overflow: visible;
-    padding-left: 24px; /* modest nudge right without overflow */
+    padding-left: 24px;
 }
 
-.nav-links::-webkit-scrollbar { display: none; }
+.nav-links::-webkit-scrollbar {
+    display: none;
+}
 
 .nav-left-links {
     display: flex;
@@ -125,7 +67,7 @@ body > form > footer {
     gap: 15px;
     margin-left: auto;
     overflow: visible;
-    margin-right: -40px; /* pull dashboard/profile further right */
+    margin-right: -40px;
 }
 
 .nav-link {
@@ -241,38 +183,37 @@ body > form > footer {
     background: rgba(0, 104, 55, 0.1);
 }
 
-
 @media (max-width: 900px) {
     .mcl-nav {
         flex-direction: column;
         align-items: flex-start;
         padding: 14px 20px;
     }
+
     .logo-container {
         width: 100%;
         justify-content: space-between;
         margin-right: 0;
     }
+
     .nav-links {
         width: 100%;
         justify-content: flex-start;
         gap: 14px;
         flex-wrap: wrap;
         overflow: visible;
-        padding-left: 0; /* reset desktop shift */
+        padding-left: 0;
     }
+
     .nav-link,
     .login-btn {
         font-size: 0.9rem;
     }
+
     .nav-auth {
         margin-left: auto;
-        margin-right: 0; /* reset desktop negative margin */
+        margin-right: 0;
         padding-right: 0;
-    }
-    .page-content {
-        padding: 18px 4vw;
-        max-width: 1000px;
     }
 }
 
@@ -281,26 +222,32 @@ body > form > footer {
         align-items: stretch;
         gap: 10px;
     }
+
     .logo-container {
         gap: 10px;
         margin-right: 0;
     }
+
     .cabuyao-logo {
         height: 42px;
     }
+
     .nav-links {
         flex-direction: column;
         align-items: stretch;
         padding-left: 0;
     }
+
     .nav-link {
         padding: 8px 0;
         border-bottom: 1px solid rgba(0,0,0,0.06);
     }
+
     .login-btn {
         width: 100%;
         text-align: center;
     }
+
     .nav-auth {
         margin-left: 0;
         margin-right: 0;
@@ -308,9 +255,4 @@ body > form > footer {
         width: 100%;
         justify-content: flex-start;
     }
-    .page-content {
-        padding: 16px 14px;
-        max-width: 100%;
-    }
 }
-

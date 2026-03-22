@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Web.UI;
-using System.Xml.Linq;
 using Microsoft.AspNet.Identity;
 
 namespace G5_FINAL_PROJECT

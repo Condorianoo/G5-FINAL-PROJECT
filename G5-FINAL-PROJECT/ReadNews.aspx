@@ -7,7 +7,9 @@
 <head runat="server">
     <title>View Article - Cabuyao Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="styles/image-viewer.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -88,7 +90,7 @@
         <div class="read-container">
             <a href="NewsEvents.aspx" class="btn-back"> Back to News</a>
             
-            <asp:Image ID="imgFullNews" runat="server" CssClass="full-news-img" />
+            <asp:Image ID="imgFullNews" runat="server" CssClass="full-news-img zoomable-image" data-viewer="true" />
             
             <span class="news-meta">
                 Published on <asp:Label ID="lblDate" runat="server"></asp:Label>
@@ -105,5 +107,6 @@
 
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
+    <script src="scripts/image-viewer.js"></script>
 </body>
 </html>

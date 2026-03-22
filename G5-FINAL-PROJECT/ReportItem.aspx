@@ -7,7 +7,9 @@
 <head runat="server">
     <title>Report Item - Cabuyao Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="styles/forms.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -40,15 +42,8 @@
         }
 
         .glass-form {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            width: 100%;
             max-width: 700px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         .glass-form h2 { 
@@ -71,15 +66,9 @@
         }
         
         .input-ctrl {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
             border: 1px solid rgba(255,255,255,0.3);
             background: rgba(255,255,255,0.9);
-            color: #333;
             font-size: 1rem;
-            box-sizing: border-box;
-            font-family: inherit;
         }
 
         .file-area {

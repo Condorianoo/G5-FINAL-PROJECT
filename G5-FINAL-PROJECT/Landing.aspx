@@ -7,6 +7,7 @@
 <head runat="server">
     <title>Cabuyao Lost & Found</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
     <style>
         /* CSS RESET & FULL HEIGHT */

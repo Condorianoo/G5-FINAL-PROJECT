@@ -7,9 +7,12 @@
 <head runat="server">
     <title>About Us - Cabuyao Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="styles/image-viewer.css" />
     <style>
-        * {
+        .content-container,
+        .content-container * {
             text-align: center;
         }
 
@@ -206,7 +209,7 @@
                         <div class="divider-line"></div>
                         <div class="dev-row">
                             <div class="dev-card">
-                                <img src="images/Quennu.jpg" alt="Developer" class="dev-image" />
+                                <img src="images/Quennu.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
                                 <h4 class="dev-name">Quennu Pastrana</h4>
                                 <p class="dev-role">Lead Backend</p>
                                 <p class="dev-bio"><strong>"Sobrang Pogi"</strong></p>
@@ -214,7 +217,7 @@
                             </div>
 
                             <div class="dev-card">
-                                <img src="images/Dwight.jpg" alt="Developer" class="dev-image" />
+                                <img src="images/Dwight.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
                                 <h4 class="dev-name">Dwight Reyes</h4>
                                 <p class="dev-role">Frontend Design</p>
                                 <p class="dev-bio"><strong>"Panay ang Legend of Zelda: Tears of the Kingdom"</strong></p>
@@ -222,7 +225,7 @@
                             </div>
 
                             <div class="dev-card">
-                                <img src="images/Aeron.jpg" alt="Developer" class="dev-image" />
+                                <img src="images/Aeron.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
                                 <h4 class="dev-name">Aeron Rivera</h4>
                                 <p class="dev-role">Database Admin</p>
                                 <p class="dev-bio"><strong>"Panay ang VALORANT"</strong></p>
@@ -232,7 +235,7 @@
 
                         <div class="dev-row">
                             <div class="dev-card">
-                                <img src="images/Dom.jpg" alt="Developer" class="dev-image" />
+                                <img src="images/Dom.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
                                 <h4 class="dev-name">Kyle Dom</h4>
                                 <p class="dev-role">System Analyst</p>
                                 <p class="dev-bio"><strong>"Mayaman; Pede kayo umutang dito"</strong></p>
@@ -240,7 +243,7 @@
                             </div>
 
                             <div class="dev-card">
-                                <img src="images/Babiera.jpg" alt="Developer" class="dev-image" />
+                                <img src="images/Babiera.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
                                 <h4 class="dev-name">Fitzgerald Babiera</h4>
                                 <p class="dev-role">Project Manager</p>
                                 <p class="dev-bio"><strong>"Gundam addict na broke; VALORANT addict na botfrag"</strong></p>
@@ -254,5 +257,6 @@
             <uc:SiteFooter runat="server" ID="SiteFooter" />
         </div>
     </form>
+    <script src="scripts/image-viewer.js"></script>
 </body>
 </html>

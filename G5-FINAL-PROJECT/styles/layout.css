@@ -1,0 +1,69 @@
+:root {
+    --cabuyao-green: #006837;
+    --cabuyao-yellow: #FFD700;
+}
+
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body > form {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+body > form > .page-shell {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    min-height: 100%;
+    width: 100%;
+    align-items: center;
+}
+
+.page-shell > .mcl-nav {
+    align-self: stretch;
+    width: 100%;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: clamp(16px, 5vw, 40px);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body > form > footer {
+    width: 100%;
+    margin-top: 0;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .page-content {
+        padding: 18px 4vw;
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 600px) {
+    .page-content {
+        padding: 16px 14px;
+        max-width: 100%;
+    }
+}

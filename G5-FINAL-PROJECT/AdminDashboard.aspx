@@ -7,7 +7,9 @@
 <head runat="server">
     <title>Admin Dashboard - Cabuyao Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="styles/image-viewer.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -27,10 +29,50 @@
         }
 
         .table-wrapper { width: 100%; overflow-x: auto; }
-        .admin-table { width: 100%; min-width: 720px; border-collapse: collapse; margin-top: 25px; color: #333; display: table; }
+        .admin-table { width: 100%; min-width: 900px; border-collapse: collapse; margin-top: 25px; color: #333; display: table; }
         .admin-table th { background-color: var(--cabuyao-green); color: white; padding: 18px 15px; text-align: left; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
         .admin-table td { padding: 15px; border-bottom: 1px solid #eee; font-size: 0.95rem; line-height: 1.4; }
         .admin-table tr:hover td { background-color: #fcfcfc; }
+        .item-preview-cell { width: 120px; }
+        .item-preview-img {
+            width: 88px;
+            height: 88px;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 104, 55, 0.18);
+            background: #f3f3f3;
+        }
+        .item-preview-fallback {
+            width: 88px;
+            height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #f3f3f3;
+            color: #888;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .proofs-cell { min-width: 260px; }
+        .proofs-layout {
+            display: grid;
+            grid-template-columns: 88px 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+        .proofs-text {
+            font-size: 0.85rem;
+            color: #444;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
 
         .btn-approve { background-color: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .btn-reject { background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
@@ -52,7 +94,7 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th style="width: 15%;">Type</th><th style="width: 25%;">Item Title</th><th style="width: 40%;">Description</th><th style="width: 20%;">Actions</th>
+                            <th style="width: 12%;">Type</th><th style="width: 23%;">Item Title</th><th style="width: 15%;">Image</th><th style="width: 30%;">Description</th><th style="width: 20%;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,6 +103,11 @@
                                 <tr>
                                     <td><span style="background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;"><%# Eval("Type") %></span></td>
                                     <td style="font-weight: 700; color: #006837;"><%# Eval("Title") %></td>
+                                    <td class="item-preview-cell">
+                                        <%# string.IsNullOrEmpty(Convert.ToString(Eval("ImagePath")))
+                                            ? "<div class='item-preview-fallback'>No Image</div>"
+                                            : "<img src='" + Eval("ImagePath") + "' alt='Item image' class='item-preview-img zoomable-image' data-viewer='true' />" %>
+                                    </td>
                                     <td style="color: #666;"><%# Eval("Description") %></td>
                                     <td>
                                         <asp:Button ID="btnApprove" runat="server" Text="Approve" CssClass="btn-approve" CommandName="Approve" CommandArgument='<%# Eval("ItemID") %>' />
@@ -78,7 +125,7 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th style="width: 15%;">Claimant</th><th style="width: 15%;">Item</th><th style="width: 40%;">Proof Provided</th><th style="width: 10%;">Date Sent</th><th style="width: 20%;">Actions</th>
+                            <th style="width: 15%;">Claimant</th><th style="width: 15%;">Item</th><th style="width: 40%;">Proofs Provided</th><th style="width: 10%;">Date Sent</th><th style="width: 20%;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,7 +134,14 @@
                                 <tr>
                                     <td style="font-weight: bold;"><%# Eval("ClaimerName") %></td>
                                     <td style="color: #006837;"><%# Eval("ItemName") %></td>
-                                    <td style="font-size: 0.85rem; color: #444;"><%# Eval("ProofDetails") %></td>
+                                    <td class="proofs-cell">
+                                        <div class="proofs-layout">
+                                            <%# string.IsNullOrEmpty(Convert.ToString(Eval("ProofImagePath")))
+                                                ? "<div class='item-preview-fallback'>No Image</div>"
+                                                : "<img src='" + Eval("ProofImagePath") + "' alt='Proof image' class='item-preview-img zoomable-image' data-viewer='true' />" %>
+                                            <div class="proofs-text"><%# Eval("ProofDetails") %></div>
+                                        </div>
+                                    </td>
                                     <td style="font-size: 0.8rem;"><%# Eval("ClaimDate", "{0:MMM dd, yyyy}") %></td>
                                     <td>
                                         <asp:Button ID="btnApproveClaim" runat="server" Text="Approve" CssClass="btn-approve" CommandName="ApproveClaim" CommandArgument='<%# Eval("ClaimID") + "|" + Eval("ItemID") %>' />
@@ -128,5 +182,6 @@
         </div>
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
+    <script src="scripts/image-viewer.js"></script>
 </body>
 </html>

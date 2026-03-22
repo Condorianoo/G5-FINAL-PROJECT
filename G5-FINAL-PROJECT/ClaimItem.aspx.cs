@@ -8,6 +8,15 @@ namespace G5_FINAL_PROJECT
     {
         string itemID;
 
+        private static bool HasProofImageColumn(SqlConnection conn)
+        {
+            const string query = "SELECT COUNT(1) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Claims' AND COLUMN_NAME = 'ProofImagePath'";
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             itemID = Request.QueryString["id"];
@@ -28,33 +37,36 @@ namespace G5_FINAL_PROJECT
             string connStr = ConfigurationManager.ConnectionStrings["CabuyaoDB"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-
                 string query = "SELECT Title, Description, ImagePath FROM Items WHERE ItemID = @ID";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ID", itemID);
-
-                try
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        lblItemTitle.Text = reader["Title"].ToString();
-                        litItemName.Text = reader["Title"].ToString(); // For the success message
-                        lblItemDesc.Text = reader["Description"].ToString();
+                    cmd.Parameters.AddWithValue("@ID", itemID);
 
-                        string imgPath = reader["ImagePath"].ToString();
-                        var resolved = BlobStorageHelper.GetPublicUrl(imgPath);
-                        imgItem.ImageUrl = !string.IsNullOrEmpty(resolved) ? resolved : "~/images/no-image.png";
-                    }
-                    else
+                    try
                     {
-                        Response.Redirect("FindItem.aspx");
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                lblItemTitle.Text = reader["Title"].ToString();
+                                litItemName.Text = reader["Title"].ToString();
+                                lblItemDesc.Text = reader["Description"].ToString();
+
+                                string imgPath = reader["ImagePath"].ToString();
+                                var resolved = BlobStorageHelper.GetPublicUrl(imgPath);
+                                imgItem.ImageUrl = !string.IsNullOrEmpty(resolved) ? resolved : "~/images/no-image.png";
+                            }
+                            else
+                            {
+                                Response.Redirect("FindItem.aspx");
+                            }
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    lblError.Text = "Error loading details: " + ex.Message;
+                    catch (Exception ex)
+                    {
+                        lblError.Text = "Error loading details: " + ex.Message;
+                    }
                 }
             }
         }
@@ -67,25 +79,56 @@ namespace G5_FINAL_PROJECT
                 return;
             }
 
+            string proofImagePath = string.Empty;
+            if (fuProofImage.HasFile)
+            {
+                try
+                {
+                    proofImagePath = BlobStorageHelper.Upload(
+                        fuProofImage.FileContent,
+                        fuProofImage.PostedFile.ContentType,
+                        "claim-proofs",
+                        fuProofImage.FileName);
+                }
+                catch (Exception ex)
+                {
+                    lblError.Text = "Image upload failed: " + ex.Message;
+                    return;
+                }
+            }
+
             string connStr = ConfigurationManager.ConnectionStrings["CabuyaoDB"].ConnectionString;
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-
-                string query = "INSERT INTO Claims (ItemID, ClaimantID, ProofDetails, ClaimDate) " +
-                               "VALUES (@ItemID, @UID, @Proof, GETDATE())";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ItemID", itemID);
-                cmd.Parameters.AddWithValue("@UID", Session["UserID"]);
-                cmd.Parameters.AddWithValue("@Proof", txtProof.Text);
-
                 try
                 {
                     conn.Open();
-                    cmd.ExecuteNonQuery();
+                    bool hasProofImageColumn = HasProofImageColumn(conn);
+                    if (!hasProofImageColumn && !string.IsNullOrEmpty(proofImagePath))
+                    {
+                        lblError.Text = "Claim proof image upload requires the ProofImagePath database column. Run Claims_ProofImage_Migration.sql first.";
+                        return;
+                    }
 
-                    pnlClaimForm.Visible = false; // Hide the input form
-                    pnlSuccess.Visible = true;    // Show the success message
+                    string query = hasProofImageColumn
+                        ? "INSERT INTO Claims (ItemID, ClaimantID, ProofDetails, ProofImagePath, ClaimDate) VALUES (@ItemID, @UID, @Proof, @ProofImagePath, GETDATE())"
+                        : "INSERT INTO Claims (ItemID, ClaimantID, ProofDetails, ClaimDate) VALUES (@ItemID, @UID, @Proof, GETDATE())";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ItemID", itemID);
+                        cmd.Parameters.AddWithValue("@UID", Session["UserID"]);
+                        cmd.Parameters.AddWithValue("@Proof", txtProof.Text);
+                        if (hasProofImageColumn)
+                        {
+                            cmd.Parameters.AddWithValue("@ProofImagePath", string.IsNullOrEmpty(proofImagePath) ? (object)DBNull.Value : proofImagePath);
+                        }
+
+                        cmd.ExecuteNonQuery();
+
+                        pnlClaimForm.Visible = false;
+                        pnlSuccess.Visible = true;
+                    }
                 }
                 catch (Exception ex)
                 {

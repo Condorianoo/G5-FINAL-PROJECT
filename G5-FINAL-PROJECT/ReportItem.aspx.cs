@@ -1,8 +1,6 @@
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.IO;
-using System.Web.UI;
 
 namespace G5_FINAL_PROJECT
 {
@@ -19,7 +17,7 @@ namespace G5_FINAL_PROJECT
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             string connStr = ConfigurationManager.ConnectionStrings["CabuyaoDB"].ConnectionString;
-            string savedPath = "";
+            string savedPath = string.Empty;
 
             if (fuMedia.HasFile)
             {
@@ -36,7 +34,6 @@ namespace G5_FINAL_PROJECT
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
-
                 string query = "INSERT INTO Items (Title, Description, Type, Status, ReportedByID, ImagePath) " +
                                "VALUES (@Title, @Desc, @Type, 'Pending', @UID, @Img)";
 
@@ -56,7 +53,6 @@ namespace G5_FINAL_PROJECT
                     {
                         conn.Open();
                         int rows = cmd.ExecuteNonQuery();
-                        conn.Close();
 
                         if (rows > 0)
                         {

@@ -7,7 +7,10 @@
 <head runat="server">
     <title>Claim Item - Cabuyao Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/layout.css" />
     <link rel="stylesheet" type="text/css" href="styles/header.css" />
+    <link rel="stylesheet" type="text/css" href="styles/forms.css" />
+    <link rel="stylesheet" type="text/css" href="styles/image-viewer.css" />
     <style>
         :root {
             --cabuyao-green: #006837;
@@ -32,15 +35,8 @@
         }
 
         .glass-form {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            width: 100%;
             max-width: 600px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         .item-preview-img {
@@ -58,9 +54,9 @@
         .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
         
         .input-ctrl {
-            width: 100%; padding: 12px; border-radius: 10px; border: none;
-            background: rgba(255,255,255,0.9); color: #333; margin-bottom: 20px;
-            font-family: inherit; box-sizing: border-box;
+            border: none;
+            background: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
         }
 
         .submit-btn {
@@ -74,13 +70,13 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" enctype="multipart/form-data">
         <uc:SiteHeader runat="server" ID="SiteHeader" />
         
         <div class="claim-container">
             <asp:Panel ID="pnlClaimForm" runat="server" CssClass="glass-form">
                 <div style="text-align:center;" class="item-details-text">
-                    <asp:Image ID="imgItem" runat="server" CssClass="item-preview-img" />
+                    <asp:Image ID="imgItem" runat="server" CssClass="item-preview-img zoomable-image" data-viewer="true" />
                     <h2><asp:Label ID="lblItemTitle" runat="server"></asp:Label></h2>
                     <p><asp:Label ID="lblItemDesc" runat="server"></asp:Label></p>
                 </div>
@@ -89,6 +85,13 @@
                     <label>Proof of Ownership</label>
                     <asp:TextBox ID="txtProof" runat="server" TextMode="MultiLine" Rows="4" CssClass="input-ctrl" 
                         placeholder="Describe what's inside or unique marks only the owner would know..."></asp:TextBox>
+                </div>
+
+                <div class="form-group">
+                    <label>Supporting Image (Optional)</label>
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; border: 2px dashed rgba(255,255,255,0.2);">
+                        <asp:FileUpload ID="fuProofImage" runat="server" ForeColor="White" />
+                    </div>
                 </div>
 
                 <asp:Button ID="btnSubmitClaim" runat="server" Text="Submit Claim Request" 
@@ -108,5 +111,6 @@
 
         <uc:SiteFooter runat="server" ID="SiteFooter" />
     </form>
+    <script src="scripts/image-viewer.js"></script>
 </body>
 </html>

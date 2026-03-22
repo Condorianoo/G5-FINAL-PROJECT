@@ -112,12 +112,19 @@
   <ItemGroup>
     <Content Include="FindItem.aspx" />
     <Content Include="ChangePassword.aspx" />
+    <Content Include="AppSettings.Local.config" />
+    <Content Include="AppSettings.Local.config.example" />
+    <Content Include="ConnectionStrings.Local.config" />
+    <Content Include="ConnectionStrings.Local.config.example" />
     <Content Include="images\Babiera.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="SiteFooter.ascx" />
     <Content Include="SiteHeader.ascx" />
+    <Content Include="styles\forms.css" />
     <Content Include="styles\header.css" />
+    <Content Include="styles\image-viewer.css" />
+    <Content Include="styles\layout.css" />
     <Content Include="images\Aeron.jpg" />
     <Content Include="images\Batingaw.jpg" />
     <Content Include="images\Black_Wallet.jpg" />
@@ -127,6 +134,7 @@
     <Content Include="images\Dom.jpg" />
     <Content Include="images\Dwight.jpg" />
     <Content Include="images\Job_Fair.jpeg" />
+    <Content Include="images\News\**\*" />
     <Content Include="images\Quennu.jpg" />
     <Content Include="ReportItem.aspx" />
     <Content Include="Web.config" />
@@ -139,6 +147,8 @@
     <Content Include="ClaimItem.aspx" />
     <Content Include="ManageNews.aspx" />
     <Content Include="ReadNews.aspx" />
+    <Content Include="scripts\image-viewer.js" />
+    <Content Include="uploads\**\*" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FindItem.aspx.cs">
@@ -258,6 +268,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="..\Claims_ProofImage_Migration.sql" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

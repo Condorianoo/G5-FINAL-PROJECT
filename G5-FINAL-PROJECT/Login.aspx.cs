@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Web.UI;
 using Microsoft.AspNet.Identity;
 
 namespace G5_FINAL_PROJECT
@@ -37,7 +36,7 @@ namespace G5_FINAL_PROJECT
                             {
                                 Session["UserID"] = reader["UserID"].ToString();
                                 Session["Role"] = reader["Role"].ToString();
-                                Session["FullName"] = reader["FullName"].ToString(); // This passes the name to the header!
+                                Session["FullName"] = reader["FullName"].ToString();
 
                                 Response.Redirect("Menu.aspx");
                             }

@@ -2,8 +2,6 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Web.UI.WebControls;
 
 namespace G5_FINAL_PROJECT
 {
@@ -39,7 +37,6 @@ namespace G5_FINAL_PROJECT
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
 
-                    // Transform stored blob names to SAS URLs for display
                     foreach (DataRow row in dt.Rows)
                     {
                         var path = row["ImagePath"] as string;
@@ -60,7 +57,7 @@ namespace G5_FINAL_PROJECT
                 return;
             }
 
-            string imagePath = ""; // Default empty
+            string imagePath = string.Empty;
 
             if (fuNewsImage.HasFile)
             {
