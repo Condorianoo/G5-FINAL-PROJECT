@@ -70,7 +70,7 @@
 
         .lead-text { 
             font-size: 1.2rem; 
-            color: var(--cabuyao-yellow); 
+            color: #ffffff; 
             font-weight: 600; 
             margin-bottom: 40px; 
         }
@@ -89,7 +89,7 @@
         }
 
         .info-box p { 
-            color: rgba(255, 255, 255, 0.85); 
+            color: #ffffff; 
             line-height: 1.8; 
             font-size: 1.05rem; 
             margin: 0; 

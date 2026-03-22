@@ -64,6 +64,7 @@
         .news-card {
             background: white; border-radius: 15px; overflow: hidden;
             transition: all 0.3s ease; display: flex; flex-direction: column; color: var(--text-dark);
+            text-decoration: none; cursor: pointer;
         }
         .news-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
 
@@ -106,7 +107,7 @@
                 <div class="news-grid">
                     <asp:Repeater ID="NewsRepeater" runat="server">
                         <ItemTemplate>
-                            <article class="news-card">
+                            <a class="news-card" href='ReadNews.aspx?id=<%# Eval("NewsID") %>'>
                                 <img src='<%# string.IsNullOrEmpty(Eval("ImagePath")?.ToString()) ? "images/Cabuyao_Portal.jpg" : Eval("ImagePath") %>' alt="News Image" class="news-image zoomable-image" data-viewer="true" />
                                 <div class="news-content">
                                     <span class="news-date"><%# Eval("PublishDate", "{0:MMMM dd, yyyy}") %></span>
@@ -114,9 +115,9 @@
                                     <p class="news-excerpt">
                                         <%# Eval("Content").ToString().Length > 120 ? Eval("Content").ToString().Substring(0, 120) + "..." : Eval("Content") %>
                                     </p>
-                                    <a href='ReadNews.aspx?id=<%# Eval("NewsID") %>' class="read-more">Read Full Story </a>
+                                    <span class="read-more">Read Full Story</span>
                                 </div>
-                            </article>
+                            </a>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>

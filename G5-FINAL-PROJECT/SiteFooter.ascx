@@ -29,6 +29,15 @@
     .footer-col ul li a { color: #4f4f4f; text-decoration: none; transition: 0.3s; }
     .footer-col ul li a:hover { color: var(--cabuyao-yellow); }
 
+    .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .footer-brand img {
+        height: 52px;
+        width: auto;
+    }
     .footer-brand h2 { color: #006837; margin: 0; font-weight: 900; letter-spacing: 1px; }
     .footer-brand p { margin-top: 10px; font-size: 0.8rem; color: #4f4f4f; }
 
@@ -40,15 +49,18 @@
 <footer>
     <div class="footer-container">
         <div class="footer-col footer-brand">
-            <h2>CABUYAO LOST AND FOUND</h2>
-            <p>&copy; 2026 Cabuyao City Lost and Found Recovery. All Rights Reserved.</p>
+            <img src="images/Cabuyao_Logo.png" alt="Cabuyao Logo" />
+            <div>
+                <h2>CABUYAO LOST AND FOUND</h2>
+                <p>&copy; 2026 Cabuyao City Lost and Found Recovery. All Rights Reserved.</p>
+            </div>
         </div>
         <div class="footer-col">
             <h3>Official Links</h3>
             <ul>
-                <li><a href="https://www.cabuyao.gov.ph">Cabuyao City Website</a></li>
-                <li><a href="#">DILG Cabuyao</a></li>
-                <li><a href="#">PNP Cabuyao</a></li>
+                <li><a href="https://www.facebook.com/BagongCabuyao" target="_blank" rel="noopener">Cabuyao Official Facebook Page</a></li>
+                <li><a href="https://www.facebook.com/dilg.cabuyao" target="_blank" rel="noopener">DILG Cabuyao</a></li>
+                <li><a href="https://www.facebook.com/PNPCabuyao" target="_blank" rel="noopener">Cabuyao Component City Police Station</a></li>
             </ul>
         </div>
     </div>

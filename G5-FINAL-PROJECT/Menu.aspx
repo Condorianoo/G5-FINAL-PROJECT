@@ -99,7 +99,7 @@
         }
 
         .glass-card p { 
-            color: var(--cabuyao-yellow); 
+            color: #000; 
             line-height: 1.4; 
             font-size: 0.95rem;
             font-weight: 600;
@@ -116,13 +116,11 @@
                     <a href="FindItem.aspx" class="glass-card">
                         
                         <h2>I LOST SOMETHING</h2>
-                        <p>Access the missing item database</p>
                     </a>
 
                     <a href="ReportItem.aspx" class="glass-card">
                         
                         <h2>I FOUND SOMETHING</h2>
-                        <p>Submit or report a missing item</p>
                     </a>
                 </div>
             </div>
