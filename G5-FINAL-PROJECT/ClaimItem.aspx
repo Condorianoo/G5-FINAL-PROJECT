@@ -94,6 +94,7 @@
                     </div>
                 </div>
 
+                <br />
                 <asp:Button ID="btnSubmitClaim" runat="server" Text="Submit Claim Request" 
                     CssClass="submit-btn" OnClick="btnSubmitClaim_Click" />
                 
