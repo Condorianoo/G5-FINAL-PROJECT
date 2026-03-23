@@ -125,7 +125,6 @@
     <Content Include="AppSettings.Local.config.example" />
     <Content Include="ConnectionStrings.Local.config" />
     <Content Include="ConnectionStrings.Local.config.example" />
-    <Content Include="images\Babiera.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="SiteFooter.ascx" />
@@ -134,17 +133,13 @@
     <Content Include="styles\header.css" />
     <Content Include="styles\image-viewer.css" />
     <Content Include="styles\layout.css" />
-    <Content Include="images\Aeron.jpg" />
     <Content Include="images\Batingaw.jpg" />
     <Content Include="images\Black_Wallet.jpg" />
     <Content Include="images\CabuyaoCityHalljf7175_10.JPG" />
     <Content Include="images\Cabuyao_Logo.png" />
     <Content Include="images\Cabuyao_Portal.jpg" />
-    <Content Include="images\Dom.jpg" />
-    <Content Include="images\Dwight.jpg" />
     <Content Include="images\Job_Fair.jpeg" />
     <Content Include="images\News\**\*" />
-    <Content Include="images\Quennu.jpg" />
     <Content Include="ReportItem.aspx" />
     <Content Include="Web.config" />
     <Content Include="Landing.aspx" />

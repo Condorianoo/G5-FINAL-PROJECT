@@ -202,55 +202,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <br /><br /><br />
-                        <!-- Section 4: Meet the Developers -->
-                        <h2 class="page-title">Meet <span class="text-yellow">The Developers</span></h2>
-                        <div class="divider-line"></div>
-                        <div class="dev-row">
-                            <div class="dev-card">
-                                <img src="images/Quennu.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
-                                <h4 class="dev-name">Quennu Pastrana</h4>
-                                <p class="dev-role">Lead Backend</p>
-                                <p class="dev-bio"><strong>"Sobrang Pogi"</strong></p>
-                                <p class="dev-bio"><br />Focused on backend logic and database integration.</p>
-                            </div>
-
-                            <div class="dev-card">
-                                <img src="images/Dwight.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
-                                <h4 class="dev-name">Dwight Reyes</h4>
-                                <p class="dev-role">Frontend Design</p>
-                                <p class="dev-bio"><strong>"Panay ang Legend of Zelda: Tears of the Kingdom"</strong></p>
-                                <p class="dev-bio"><br />Handles UI/UX design and user-facing features.</p>
-                            </div>
-
-                            <div class="dev-card">
-                                <img src="images/Aeron.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
-                                <h4 class="dev-name">Aeron Rivera</h4>
-                                <p class="dev-role">Database Admin</p>
-                                <p class="dev-bio"><strong>"Panay ang VALORANT"</strong></p>
-                                <p class="dev-bio"><br />Manages schema, queries, and database reliability.</p>
-                            </div>
-                        </div>
-
-                        <div class="dev-row">
-                            <div class="dev-card">
-                                <img src="images/Dom.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
-                                <h4 class="dev-name">Kyle Dom</h4>
-                                <p class="dev-role">System Analyst</p>
-                                <p class="dev-bio"><strong>"Mayaman; Pede kayo umutang dito"</strong></p>
-                                <p class="dev-bio"><br />Ensures requirements are met and system flows are clear.</p>
-                            </div>
-
-                            <div class="dev-card">
-                                <img src="images/Babiera.jpg" alt="Developer" class="dev-image zoomable-image" data-viewer="true" />
-                                <h4 class="dev-name">Fitzgerald Babiera</h4>
-                                <p class="dev-role">Project Manager</p>
-                                <p class="dev-bio"><strong>"Gundam addict na broke; VALORANT addict na botfrag"</strong></p>
-                                <p class="dev-bio"><br />Coordinates tasks, documentation, and project delivery.</p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
